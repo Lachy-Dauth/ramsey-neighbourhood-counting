@@ -1,0 +1,21 @@
+{
+ "type": "density",
+ "k": 3,
+ "n": 8,
+ "star": {
+  "BBB": "-2",
+  "GBR": "-2",
+  "GGG": "2/3"
+ },
+ "rows": [
+  {
+   "kind": "floor_up",
+   "i": "G",
+   "j": "G",
+   "mu": "2/3"
+  }
+ ],
+ "squares": [],
+ "hstar": "3",
+ "m": 12
+}

@@ -1,0 +1,16 @@
+        n    e(3, 10, n) ≥   comments
+        29         58        exact, the same as in [13]
+        30         66        exact
+        31         73        exact
+        32         81        exact
+        33         90        exact
+        34         99        exact, (3, 10; 34, 99)-graph constructed by Backelin [2]
+        35        107
+        36        117
+        37        128
+        38        139        146 required for R(3, 11) ≤ 49
+        39        151        as required for R(3, 11) ≤ 50, Theorem 7
+        40        161
+        41        172        184 maximum
+        42         ∞         hence R(3, 10) ≤ 42, new bound, Theorem 6
+        43         ∞         hence R(3, 10) ≤ 43, old bound

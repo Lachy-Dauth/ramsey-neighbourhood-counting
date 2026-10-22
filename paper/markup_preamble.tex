@@ -1,0 +1,52 @@
+% Layout for the printed review copy. Loaded only when \markupcopy is defined.
+% Content, numbering and wording are identical to the clean draft.
+\geometry{a4paper,left=2.0cm,right=6.2cm,top=2.6cm,bottom=2.6cm,headheight=14pt,headsep=0.6cm}
+\usepackage{xcolor}
+\usepackage{setspace}
+\setstretch{1.7}
+\usepackage{etoolbox}
+\AtBeginEnvironment{tabular}{\setstretch{1.15}}
+\AtBeginEnvironment{thebibliography}{\setstretch{1.25}}
+% wide tables may not spill into the notes column
+\usepackage{adjustbox}
+\let\mkoldtabular\tabular
+\let\mkoldendtabular\endtabular
+\renewenvironment{tabular}{\begin{adjustbox}{max width=\linewidth}\mkoldtabular}{\mkoldendtabular\end{adjustbox}}
+% line numbers on every line, for referencing comments
+\usepackage[mathlines]{lineno}
+\renewcommand\linenumberfont{\normalfont\scriptsize\sffamily\color{black!55}}
+\linenumbers
+% header and footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\scriptsize\sffamily Review copy \textperiodcentered{} draft v2 \textperiodcentered{} printed 22 October 2026}
+\fancyhead[R]{\scriptsize\sffamily page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyhead[L]{\scriptsize\sffamily Review copy \textperiodcentered{} draft v2 \textperiodcentered{} printed 22 October 2026}\fancyhead[R]{\scriptsize\sffamily page \thepage\ of \pageref{LastPage}}}
+% ruled notes column on every page
+\usepackage{eso-pic,tikz}
+\AddToShipoutPictureBG{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \draw[black!35,line width=0.4pt]
+      ([xshift=-5.85cm,yshift=-2.6cm]current page.north east) -- ([xshift=-5.85cm,yshift=2.6cm]current page.south east);
+    \node[anchor=south west,inner sep=0pt,font=\scriptsize\sffamily,text=black!50]
+      at ([xshift=-5.6cm,yshift=-2.5cm]current page.north east) {Notes};
+    \foreach \y in {3.4,4.2,...,26.6}
+      \draw[black!22,line width=0.3pt]
+        ([xshift=-5.6cm,yshift=-\y cm]current page.north east) -- ([xshift=-0.9cm,yshift=-\y cm]current page.north east);
+  \end{tikzpicture}}
+% a ruled page for general comments at the end
+\AtEndDocument{%
+  \clearpage\nolinenumbers
+  \section*{General comments}
+  \begin{tikzpicture}[remember picture,overlay]
+    \foreach \y in {5.0,5.8,...,26.6}
+      \draw[black!22,line width=0.3pt]
+        ([xshift=2.0cm,yshift=-\y cm]current page.north west) -- ([xshift=-6.2cm,yshift=-\y cm]current page.north east);
+  \end{tikzpicture}}
+% narrower column: let paragraphs stretch rather than overrun, and break three wide displays
+\setlength{\emergencystretch}{3em}
+\newcommand{\mkbreak}[1]{\\}
+\newcommand{\mkalign}{\\}

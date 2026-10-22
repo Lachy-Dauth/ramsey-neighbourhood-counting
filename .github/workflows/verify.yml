@@ -1,0 +1,21 @@
+name: verify
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Toolchain
+        run: |
+          python3 --version
+          c++ --version | head -n 1
+          cc --version | head -n 1
+      - name: Re-run the quick computational checks (sh ancillary/run_all.sh)
+        env:
+          CXX: c++
+          CC: cc
+        run: make verify

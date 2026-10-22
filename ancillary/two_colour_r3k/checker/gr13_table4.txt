@@ -1,0 +1,11 @@
+                      n    e(3, 9, n)   comments
+                      27       61
+                      28       68       the same as in [1]
+                      29       77
+                      30       86
+                      31       95
+                      32      104       not enough for R(3, 10) ≤ 42
+                      33      118       just enough for Theorem 4
+                      34      129       122 required for R(3, 10) ≤ 43
+                      35      140       Theorem 3
+                      36      ∞         hence R(3, 9) ≤ 36, old bound

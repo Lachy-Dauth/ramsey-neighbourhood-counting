@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use these results or programs, please cite the papers."
+title: "Neighbourhood counting and new bounds for small Ramsey numbers: papers, certificates and checkers"
+authors:
+  - family-names: Dauth
+    given-names: Lachlan
+  - name: "Claude Opus 5.5"
+date-released: 2026-10-23
+license: MIT
+repository-code: "https://github.com/Lachy-Dauth/ramsey-neighbourhood-counting"
