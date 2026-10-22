@@ -1,6 +1,8 @@
 """Exact, dependency-free verification of subsequent triangle-count bounds.
 
-Published two-colour inputs: Radziszowski DS1 revision 18 (2026), Table Ib.
+Two-colour inputs: the values listed in Radziszowski DS1 revision 18 (2026), Table Ib, including the
+bounds R(4,6)<=40, R(4,7)<=58, R(4,8)<=79, R(5,6)<=85 reported there as unpublished (the starred inputs);
+verify_cascade_published_only.py repeats the check with published bounds only.
 Other three-colour inputs are listed explicitly, including the separately
 proved bounds 88,129,179 and 155. This program does not certify those inputs.
 The proof of the triangle identities is also checked on all 27 triangles.

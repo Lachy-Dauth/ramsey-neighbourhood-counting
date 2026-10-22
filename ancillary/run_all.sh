@@ -86,9 +86,9 @@ quick() {
        --claim 43,559 --claim 44,582 --claim 45,606 --claim 46,630 --claim 47,654 --claim 48,679 --claim 49,704
        --claim 50,729"
   run "two_colour_r3k: R(3,k) <= ... for k <= 50, with Backelin's e(3,l;n) bounds" \
-      in_dir two_colour_r3k tail_of 2 $PY checker/check_r3k_v2.py certs/r3k_back3_seq_k50.json $B3 $C50
+      in_dir two_colour_r3k tail_of 2 $PY checker/check_r3k_v2.py --r310 42 certs/r3k_back3_seq_k50.json $B3 $C50
   run "two_colour_r3k: R(3,k) <= ... for k <= 50, published (GR13) inputs only" \
-      in_dir two_colour_r3k tail_of 2 $PY checker/check_r3k_v2.py certs/r3k_pub_seq_k50.json --no-back3 $P50
+      in_dir two_colour_r3k tail_of 2 $PY checker/check_r3k_v2.py --r310 42 certs/r3k_pub_seq_k50.json --no-back3 $P50
   run "two_colour_r3k: negative controls" in_dir two_colour_r3k sh -c \
       "$PY checker/negative_controls_v2.py certs/r3k_back3_seq_k50.json && $PY checker/negative_controls_v2.py certs/r3k_pub_seq_k50.json && $PY checker/negative_controls_high.py certs/r3k_back3_seq_k50.json"
   run "two_colour_r4k: R(4,21) >= 260 and R(4,24) >= 370 (rebuild, rcheck, qpsym, controls)" sh two_colour_r4k/verify_all.sh
