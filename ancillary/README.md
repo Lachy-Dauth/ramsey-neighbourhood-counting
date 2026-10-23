@@ -1,6 +1,6 @@
 # Ancillary files
 
-For the two papers **[A]** *Neighbourhood counting and new bounds for small three-colour Ramsey numbers* and **[B]** *New bounds for small two- and four-colour Ramsey numbers* (in the git repository
+For the two papers **[A]** *Neighbourhood counting and new bounds for small three-colour Ramsey numbers* and **[B]** *New bounds for small two-colour Ramsey numbers* (in the git repository
 https://github.com/Lachy-Dauth/ramsey-neighbourhood-counting they are in `../paper/`). References below such as
 "A, Theorem 8.2" are to their numbering. The code and data are under the MIT licence (`LICENSE`).
 
@@ -37,15 +37,15 @@ average 10-30), so an idle machine is faster. Mode: Q = quick, F = `--full`, C =
 |  | R(4,4,4) <= 199 and R(4,4,4) <= 198 (five-vertex certificates, `check5.py`; A, Theorem 8.2) | F | 2.5-3 min each |
 |  | R(4,4,4) <= 198 again with the six-vertex checker `check6.py` (numpy; skipped if numpy is absent) | F | 7 min |
 |  | negative controls (`negative5.py`, `reuse5.py`, `negative6.py`); `identity_eloc.py` | C; Q | 6 + 4 + 22 min; 3 s |
-| `flag5_r34k/` | R(3,4,4) <= 73, R(3,4,5) <= 137, R(4,4,4) <= 200, R(3,5,5) <= 316, R(3,4,6) <= 247, R(3,4,7) <= 409, R(3,5,6) <= 622, R(3,4,8) <= 626, and with the starred inputs R(3,4,6) <= 245, R(3,4,7) <= 406, R(3,5,6) <= 619, R(3,4,8) <= 625 (manifest of 12 five-vertex mixture certificates; A, Theorem 8.3) | F | 3-4.5 min |
-|  | negative controls on all 12 certificates; positive controls on explicit colourings | C | 28 min; 8 min |
+| `flag5_r34k/` | R(3,4,4) <= 73, R(3,4,5) <= 137, R(4,4,4) <= 200, R(3,5,5) <= 316, R(3,4,6) <= 247, R(3,4,7) <= 409, R(3,5,6) <= 622, R(3,4,8) <= 626, and with the starred inputs R(3,4,6) <= 245, R(3,4,7) <= 406, R(3,5,6) <= 619, R(3,4,8) <= 625 (manifest of 13 five-vertex mixture certificates; A, Theorem 8.3). The extra one, `R355_316_r344le77.json`, proves R(3,5,5) <= 316 again without the input R(3,4,4) <= 73 (A, proof of Theorem 8.3) | F | 3-5 min |
+|  | negative controls on all 13 certificates; positive controls on explicit colourings | C | 30 min; 8 min |
 | `flag_r33k/` | R(3,3,6) <= 86, R(3,3,7) <= 125, R(3,3,8) <= 174 from three standalone five-vertex exclusion certificates (A, Theorem 8.4) | Q | 25 s |
 |  | the unified flag ladder: R(3,3,k) <= 86, 125, 173, 241, 309, 401, 505, 620, 748, 892 for k = 6..15 (155 flag certificates and 4178 ladder rows; A, Theorem 8.5) | F | 7.5 min |
 |  | controls of the chain (`controls_unified.py`) and of four five-vertex certificates (`controls5.py`); soundness test on a real colouring (`sanity5.py`) | C | 11 + 22 min; 35 s |
 | `extension_r3315/` | R(3,3,15) >= 278: the 277-vertex witness rebuilt from its compact description (SHA-256), and the certificate check that reduces it to the green clique number 13 of the n = 266 circulant (A, Theorem 9.3) | Q | 1 s |
 |  | direct exact searches on the full matrix (kcheck: no red/blue K3, no green K15; glue_check: green clique number 14) and negative controls | F | 4 min in total |
 |  | the paper's `check_colouring_full.cpp` on the 277-vertex matrix | F | 51 min |
-| `two_colour_r3k/` | R(3,k) <= B_k for k <= 50 (two chains: [GR13] inputs only, and with Backelin's e(3,l;n) bounds), e.g. R(3,24) <= 201 ([GR13] only) or 200 (with [Back3]), R(3,50) <= 729; R(3,16) <= 97, R(3,17) <= 109, R(3,19) <= 132, R(3,20) <= 145, R(3,23) <= 185 (B, Theorem 2.1; the values for k <= 23 only reproduce known bounds); negative controls | Q | 30 s |
+| `two_colour_r3k/` | R(3,k) <= B_k for k <= 50 (two chains: [GR13] inputs only, and with Backelin's e(3,l;n) bounds), e.g. R(3,24) <= 201 ([GR13] only) or 200 (with [Back3]), R(3,50) <= 729; R(3,16) <= 97, R(3,17) <= 109, R(3,19) <= 132, R(3,20) <= 145, R(3,23) <= 185 (B, Theorem 2.1; for 11 <= k <= 23 the chains improve no bound of the survey and only reproduce these known bounds); negative controls | Q | 30 s |
 | `two_colour_r4k/` | R(4,21) >= 260 and R(4,24) >= 370: graphs rebuilt from the deletion lists (SHA-256), rcheck and qpsym, negative controls (B, Theorem 3.1) | Q | 2 min (10 threads) |
 |  | direct rcheck of the 369-vertex graph for independent 24-sets | F | 9 min (10 threads) |
 | `lean/` | Lean 4 formalisation of two facts used in Lemma 3.1 of A (described in A, Section 10): the local step of the apex lemma and the unique-apex identity, no `sorry`. Needs Lean 4 and Mathlib; see `lean/README.md` | - | |

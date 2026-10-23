@@ -11,7 +11,7 @@ verify-full:
 verify-controls:
 	sh ancillary/run_all.sh --controls
 paper:
-	cd paper && for f in neighbourhood_counting two_four_colour; do pdflatex -interaction=nonstopmode $$f.tex >/dev/null && pdflatex -interaction=nonstopmode $$f.tex >/dev/null && echo "built paper/$$f.pdf"; done
+	cd paper && for f in neighbourhood_counting two_colour; do pdflatex -interaction=nonstopmode $$f.tex >/dev/null && pdflatex -interaction=nonstopmode $$f.tex >/dev/null && echo "built paper/$$f.pdf"; done
 clean:
 	find ancillary -name __pycache__ -type d -prune -exec rm -rf {} +
 	rm -f ancillary/clique_check ancillary/check_colouring_full ancillary/R_3_3_*_n*.txt

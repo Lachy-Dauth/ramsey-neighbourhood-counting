@@ -103,7 +103,7 @@ full() {
   else
     echo "== SKIPPED: flag5_r444/checkers/check6.py (second, independent checker for 198) needs numpy, not installed"
   fi
-  run "flag5_r34k: R(3,4,4) <= 73, R(3,4,5) <= 137, R(4,4,4) <= 200, R(3,5,5) <= 316, R(3,4,6..8), R(3,5,6) (manifest)" \
+  run "flag5_r34k: R(3,4,4) <= 73, R(3,4,5) <= 137, R(4,4,4) <= 200, R(3,5,5) <= 316 (also without R(3,4,4) <= 73: R355_316_r344le77.json), R(3,4,6..8), R(3,5,6) (manifest)" \
       $PY flag5_r34k/check/verify_manifest.py flag5_r34k/certificates/manifest.json
   run "flag_r33k: the unified flag ladder, R(3,3,k) <= 86, 125, 173, 241, 309, 401, 505, 620, 748, 892 (k = 6..15)" \
       $PY flag_r33k/check_unified.py flag_r33k/certificates/unified/chain_final.json

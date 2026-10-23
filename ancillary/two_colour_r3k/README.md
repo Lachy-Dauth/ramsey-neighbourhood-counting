@@ -11,8 +11,8 @@ accepts vertex-deletion rows, but neither chain uses one.
 | R(3,k) <= ([GR13] only) | 201 | 216 | 231 | 247 | 264 | 280 | 297 | 315 | 333 | 351 | 370 | 389 | 409 | as below |
 
 For 37 <= k <= 50 both chains give 429, 450, 471, 492, 513, 536, 559, 582, 606, 630, 654, 679, 704, 729. The survey
-lists no upper bounds for k >= 24. For k <= 23 the chains reproduce known values with checkable proofs.
-From [GR13] alone: R(3,17) <= 109 and R(3,20) <= 145. With [Back3]: R(3,16) <= 97, R(3,19) <= 132, R(3,23) <= 185.
+lists no upper bounds for k >= 24. For 11 <= k <= 23 the chains improve no bound of the survey; they reproduce
+the following with checkable proofs. From [GR13] alone: R(3,17) <= 109 and R(3,20) <= 145. With [Back3]: R(3,16) <= 97, R(3,19) <= 132, R(3,23) <= 185.
 `run_all.sh` passes all of these as `--claim k,B`. The checker fails if a claimed cap is not established.
 
 **Inputs assumed** (cited as in the source report):
@@ -34,7 +34,7 @@ From [GR13] alone: R(3,17) <= 109 and R(3,20) <= 145. With [Back3]: R(3,16) <= 9
 | `certs/r3k_pub_seq_k50.json` | chain with [GR13] inputs only (13403 rows) |
 | `certs/README.md` | notes on the certificates |
 | `checker/check_r3k_v2.py` | exact checker (standard library). It imports `check_r3k.py` for the input parser and the basic row types |
-| `checker/check_r3k.py` | version-1 checker (row types 'edge', 'hull', 'delete', ...; the [GR13] parser) |
+| `checker/check_r3k.py` | version-1 checker (row types 'trivial', 'thm2', 'edge', 'delete', ...; the [GR13] parser) |
 | `checker/gr13_table*.txt`, `checker/cited_extra.txt` | the cited inputs |
 | `checker/negative_controls_v2.py` | weakened [GR13] input, [Back3] dropped, zeroed Farkas multiplier, missing sequence certificate, value + 1, claim one better than proved, R(3,10) <= 42 with a weakened e(3,10,41): all must be rejected; two robustness cases must be accepted |
 | `checker/negative_controls_high.py` | forged cap R(3,24) <= 199, edge rows + 1 at k = 30 and 45, weakened e(3,10,40): all must be rejected |

@@ -47,7 +47,8 @@ lossless.
     check6: certificates/cert5x_198.txt: n=198; 1581 caps, 233 squares in 17 groups; 3929 orbits without mono K4; max orbit-average of F = -3.050e-09 (<= 0 OK); 528 profiles, min J = 3.046e-09 (> 0 OK)
     negative5: ALL CONTROLS REJECTED (10 controls);  reuse5: control reuse at 197 : rejected;  negative6: ALL CONTROLS REJECTED;  identity_eloc: mismatches: 0
 
-The margins are small (3e-9) but exact: every number is a Fraction.
+For n = 198 the two slacks (the max orbit-average of F below 0 and min J above 0) are small, about 3e-9 each,
+so the margin as defined in the paper, their sum, is about 6.1e-9. They are exact: every number is a Fraction.
 
 **Runtime** (wall time on a 10-core laptop, under load): check5 about 2.5 min for 198 or 199, and 35 s for 204.
 check6 about 7 min (and over 1 GB of memory). negative5 about 6 min, negative6 about 22 min, reuse5 about 4 min.

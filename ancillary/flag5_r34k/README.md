@@ -1,7 +1,8 @@
 # flag5_r34k: five-vertex mixture certificates for R(3,4,4), R(3,4,5), R(4,4,4), R(3,5,5), R(3,4,k), R(3,5,6)
 
-**What it proves.** Twelve exact five-vertex flag certificates with a degree-profile mixture, for general
-t = (t0,t1,t2). They are chained by `certificates/manifest.json`:
+**What it proves.** Thirteen exact five-vertex flag certificates with a degree-profile mixture, for general
+t = (t0,t1,t2): one for each of the twelve bounds below, and a variant of the R(3,5,5) certificate that does not
+use R(3,4,4) <= 73 (see "The variant for R(3,5,5)" below). They are chained by `certificates/manifest.json`:
 
 | bound | certificate | uses (besides the base inputs) |
 |---|---|---|
@@ -9,6 +10,7 @@ t = (t0,t1,t2). They are chained by `certificates/manifest.json`:
 | R(3,4,5) <= 137 | `R345_137.json` | - |
 | R(4,4,4) <= 200 | `R444_200.json` | - |
 | R(3,5,5) <= 316 | `R355_316.json` | R(3,4,4) <= 73, R(3,4,5) <= 137 |
+| R(3,5,5) <= 316 (variant) | `R355_316_r344le77.json` | R(3,4,5) <= 137 only |
 | R(3,4,6) <= 247 | `R346_247.json` | R(3,4,4) <= 73, R(3,4,5) <= 137 |
 | R(3,4,7) <= 409 | `R347_409.json` | ... and R(3,4,6) <= 247 |
 | R(3,5,6) <= 622 | `R356_622.json` | ... and R(3,4,6) <= 247, R(3,5,5) <= 316 |
@@ -34,9 +36,18 @@ it, and every new input is proved by an earlier entry of the manifest or is one 
 
 Every cap constant is recomputed from these by Lemma 2.1 and the intersection rule in the checker's docstring.
 
+**The variant for R(3,5,5).** `R355_316_r344le77.json` is `R355_316.json` with one cap constant recomputed for
+the base value R(3,4,4) <= 77 in place of the input R(3,4,4) <= 73. It is the constant of the one row whose cap
+involves R(3,4,4): the 'int' row with rho = (0,0,1,1,0,2), J = (2,3), a = (1,2) (entry 34 of `rows`, counting from 0), whose
+q = R(3,4,4) - 1 is 72 in `R355_316.json` and 76 here. Nothing else differs (the two files differ in one byte).
+The checker accepts it with the input R(3,4,5) <= 137 only, with the same margin 1.4675e-7, and R(3,4,5) <= 137
+itself uses base inputs only. So R(3,5,5) <= 316 does not depend on R(3,4,4) <= 73 (A, proof of Theorem 8.3).
+The file's `R3` field is copied unchanged from `R355_316.json`, so it still lists R(3,4,4) <= 73. The checker
+ignores that field: the inputs that count are those given with `--input` or listed in the manifest.
+
 | file | contents |
 |---|---|
-| `certificates/*.json`, `certificates/manifest.json` | the twelve certificates and the chain |
+| `certificates/*.json`, `certificates/manifest.json` | the thirteen certificates and the chain |
 | `check/check_flag5_mix.py` | exact checker for one certificate (standard library). Docstring: all definitions |
 | `check/verify_manifest.py` | runs the checker on every manifest entry with exactly its inputs, and checks the provenance of the inputs |
 | `check/check_flag4_mix.py` | four-vertex version. `verify_manifest.py` imports it (its Ramsey lookup is used for Lemma 2.1 entries; this manifest has none) |
@@ -49,6 +60,7 @@ Every cap constant is recomputed from these by Lemma 2.1 and the intersection ru
     python3 check/verify_manifest.py certificates/manifest.json
     python3 check/check_flag5_mix.py certificates/R344_73.json                     # one certificate, base inputs
     python3 check/check_flag5_mix.py certificates/R355_316.json --input 3,4,4:73 --input 3,4,5:137
+    python3 check/check_flag5_mix.py certificates/R355_316_r344le77.json --input 3,4,5:137   # the variant, no R(3,4,4) <= 73
     python3 check/controls_manifest.py certificates/manifest.json
     python3 check/controls_flag5.py && python3 check/controls_flag5_333.py && python3 check/controls_flag5_444.py && python3 check/controls_flag5_tk.py
 
@@ -60,6 +72,16 @@ Every cap constant is recomputed from these by Lemma 2.1 and the intersection ru
 ending with `MANIFEST VERIFIED`. The margins (min Sym F - max J) run from 2.2e-5 (R(3,4,4) <= 73) down to
 8.4e-9 (R(3,5,6) <= 619). The controls end with `ALL CONTROLS PASSED`.
 
-**Runtime** (10-core laptop, under load): `verify_manifest.py` 3 to 4.5 min (15 to 20 s per certificate).
-`controls_manifest.py` makes about 9 checker runs per certificate, about 28 min in all. The positive controls
-take about 8 min.
+The variant on its own (the command above) prints
+
+      Ramsey inputs looked up: R(3, 4)<=9, R(3, 5)<=14, R(4, 4)<=18, R(4, 5)<=25, R(5, 5)<=46, R(3, 3, 4)<=30, R(3, 3, 5)<=57, R(3, 4, 4)<=77, R(3, 4, 5)<=137 [input]
+    certificates/R355_316_r344le77.json: t=(3, 5, 5) n=316 D=(45, 136, 136); 6 admissible profiles; 81 stars, 180 rows, 93 squares in 8 blocks; 43166 valid labelled 5-patterns in 287 orbits; min Sym F - max J = 1.4675017507229086e-07 -> VALID
+    ALL VALID
+
+The first line shows that R(3,4,4) enters only as the base value 77 (no `[input]` tag). `R355_316.json` with
+both inputs prints the same margin. Given the input R(3,4,4) <= 73, the variant is rejected (an assertion
+`constant mismatch` on its row 34, recomputed as 72), and so is `R355_316.json` without it (recomputed as 76).
+
+**Runtime** (10-core laptop, under load): `verify_manifest.py` 3 to 5 min (10 to 20 s per certificate; the
+variant 10 s). `controls_manifest.py` makes about 9 checker runs per certificate, about 30 min in all. The
+positive controls take about 8 min.

@@ -4,7 +4,7 @@ This repository has two papers on small Ramsey numbers, and the certificates and
 computer-assisted claim in them. Run `make verify` to re-check the quick part in a few minutes.
 
 - **[A] Neighbourhood counting and new bounds for small three-colour Ramsey numbers** ([pdf](paper/neighbourhood_counting.pdf), [tex](paper/neighbourhood_counting.tex))
-- **[B] New bounds for small two- and four-colour Ramsey numbers** ([pdf](paper/two_four_colour.pdf), [tex](paper/two_four_colour.tex))
+- **[B] New bounds for small two-colour Ramsey numbers** ([pdf](paper/two_colour.pdf), [tex](paper/two_colour.tex))
 
 > **Status.** These are preprints, not yet peer reviewed. The hand proofs can be checked with pen and paper.
 > The other results are computer-assisted. Every certificate and witness is verified in exact arithmetic by
@@ -40,14 +40,20 @@ bounds in the last row 456, 700, 683, and the computer bounds R(3,4,6) <= 245 an
 | R(3,3,9), R(3,3,11), R(3,3,12) | 129, 174, 194 | **133, 183, 203** |
 | R(3,3,13), R(3,3,14), R(3,3,15) | 217, 242, 269 | **232, 267, 278** |
 
-Two and four colours (paper B):
+Four colours (paper A, Corollary 8.7): from R(3,4,4) <= 73 and R(4,4,4) <= 198, by the four-colour
+neighbourhood recurrence with the survey's R(3,3,3,4) <= 149.
+
+| number | previous upper bound | new |
+|---|---|---|
+| R(3,3,4,4), R(3,4,4,4), R(4,4,4,4) | 450, 1576, 6306 (6301 implicit in Boza 2026) | **442, 1521, 6082** |
+
+Two colours (paper B):
 
 | number | previous | new |
 |---|---|---|
 | R(3,k), 24 <= k <= 50 | no upper bound listed | **R(3,24) <= 201, ..., R(3,50) <= 729** |
 | R(4,21) | >= 242 (257 implied by a 2026 preprint) | **>= 260** |
 | R(4,24) | >= 343 (implicit) | **>= 370** |
-| R(3,3,4,4), R(3,4,4,4), R(4,4,4,4) | <= 450, 1576, 6306 (6301 implicit in Boza 2026) | **<= 442, 1521, 6082** |
 
 The main new tool is the flag-algebra certificate (Razborov) whose constraints include *local caps*. A local cap
 bounds an intersection of colour neighbourhoods by a smaller Ramsey number. Without the caps, flag algebras give
@@ -100,4 +106,4 @@ The code and data are under the MIT licence (see `LICENSE`). The paper texts are
 See `CITATION.cff`, or cite the papers as:
 
 > L. Dauth, *Neighbourhood counting and new bounds for small three-colour Ramsey numbers*, preprint, 2026.
-> L. Dauth, *New bounds for small two- and four-colour Ramsey numbers*, preprint, 2026.
+> L. Dauth, *New bounds for small two-colour Ramsey numbers*, preprint, 2026.
