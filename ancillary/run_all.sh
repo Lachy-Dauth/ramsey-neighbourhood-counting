@@ -55,7 +55,7 @@ has_numpy() { $PY -c 'import numpy' >/dev/null 2>&1; }
 quick() {
   # --- the original checks of the paper
   run "verify_hand_proofs.py: the main numerical steps of the hand proofs (Sections 4, 6)" $PY verify_hand_proofs.py
-  run "verify_bootstrap.py: the density certificate tables.json (Theorem 5.2)" \
+  run "verify_bootstrap.py: the ladder certificate tables.json (Theorem 5.2)" \
       grep_of '"(status|density_rows|degree_cases)"' $PY verify_bootstrap.py
   run "verify_cascade.py: R(3,4,7) <= 456, R(3,4,8) <= 700, R(3,5,6) <= 683 (Proposition 6.5)" \
       grep_of '"bound"' $PY verify_cascade.py

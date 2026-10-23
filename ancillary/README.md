@@ -25,7 +25,7 @@ average 10-30), so an idle machine is faster. Mode: Q = quick, F = `--full`, C =
 | file or folder | result checked | mode | runtime |
 |---|---|---|---|
 | `verify_hand_proofs.py` | the main numerical steps of the hand proofs (not every intermediate value): 88, 129, 179, the m6/m7 tables, 155, 276, 346, the triangle identities on all 27 coloured triangles, the comparison values (A, Sections 4, 6) | Q | 1 s |
-| `bootstrap.py` | regenerates `tables.json`, the density certificate for the ladder (A, Section 5) | - | |
+| `bootstrap.py` | regenerates `tables.json`, the certificate of the ladder (A, Section 5) | - | |
 | `tables.json`, `verify_bootstrap.py` | independent exact check of `tables.json`: 4240 rows, 420,545 degree cases, R(3,3,k) <= 88, 129, 179, 247, 315, 407, 512, 628, 756, 901 for k = 6..15 (A, Theorem 5.2) | Q | 10 s |
 | `verify_cascade.py` | R(3,4,7) <= 456, R(3,4,8) <= 700, R(3,5,6) <= 683 (and 276, 346), with the survey's Table Ib values (A, Proposition 6.5) | Q | 1 s |
 | `verify_cascade_published_only.py` | the same with published two-colour inputs only: 276, 458, 705, 346, 685 (A, Proposition 6.5) | Q | 1 s |

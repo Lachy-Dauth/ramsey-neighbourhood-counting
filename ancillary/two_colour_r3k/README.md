@@ -1,8 +1,9 @@
 # two_colour_r3k: upper bounds for R(3,k), k <= 50
 
 **What it proves.** The certificates bound e(3,k,n) from below, level by level, and deduce caps R(3,k) <= B_k.
-They use the Graver-Yackel inequality with lower convex hulls, vertex deletion, and an exact degree-sequence
-enumeration with a transport LP (Farkas certificates) at the binding orders.
+They use the Graver-Yackel inequality with lower convex hulls and the Radziszowski-Kreher bound, and an exact
+degree-sequence enumeration with a transport LP (Farkas certificates) at the binding orders. The checker also
+accepts vertex-deletion rows, but neither chain uses one.
 
 | k | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37..50 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|

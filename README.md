@@ -56,7 +56,7 @@ only 85 for R(3,4,4) (Lidický and Pfender). See paper A, Section 8.
 ## Checking the results
 
 Requirements: Python 3 (standard library), a C++17 compiler and a C compiler with POSIX threads. NumPy is optional;
-it is used only by one second checker.
+it is used only by one second checker and its negative controls.
 
 ```sh
 make verify            # quick mode, a few minutes (this is what CI runs)
@@ -89,7 +89,7 @@ Codex (based on GPT-6) in the first stage of the project, and Claude Opus 5.5, a
 Anthropic, in the later stages. In line with arXiv's policy, the models are acknowledged in the papers rather
 than listed as an author. Certificates were found with floating-point solvers and local search, then rounded and
 checked exactly. Each result was also re-checked, before inclusion, by a separately written exact verifier that
-shares no code with the search (both were written with the model; see the Acknowledgements of the papers).
+shares no code with the search (both were written with these AI systems; see the Acknowledgements of the papers).
 
 ## Licence
 

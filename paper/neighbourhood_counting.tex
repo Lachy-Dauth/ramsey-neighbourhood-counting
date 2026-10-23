@@ -156,6 +156,11 @@ For instance, $\R(3,7)=23$ gives $23+23+91-1=136$ for $\R(3,3,7)$, and then $\R(
 Parity improves neither.
 We do not claim that any benchmark has appeared in the literature.
 
+The benchmarks use the bounds of \cite{Boz26}, but not the criterion modulo~$3$ that proves them \cite[Theorem~2.1]{Boz26}.
+Applied in the same way, that criterion lowers the benchmark $2\cdot 50+342-1=441$ for $\R(3,3,11)$ to $440$: here $342=2\cdot 41+261-1$ is the value of \eqref{eq:recurrence} for $\R(3,3,10)$, without parity, and $441$, $342$ and $261$ are all divisible by~$3$.
+From $440$, \eqref{eq:recurrence} with parity gives $557$, $691$, $844$ and $1017$ for $12\le k\le 15$, in place of $558$, $693$, $846$ and $1019$.
+No other benchmark changes.
+
 \paragraph{Hand and computer bounds.}
 The bounds marked ``hand'' come from Sections~\ref{sec:three}, \ref{sec:types} and~\ref{sec:444}: double counting, which a reader can check with pen and paper.
 Those marked ``computer'' come from Section~\ref{sec:five}: five-vertex certificates and, for $\R(3,3,k)$ with $k\ge 8$, the procedure of Section~\ref{sec:ladder} fed with exclusions and edge-count lower bounds from four- and five-vertex certificates.
@@ -263,13 +268,14 @@ In Sections~\ref{sec:three} and~\ref{sec:ladder}, for $\R(3,3,k)$ with $k\ge 7$,
 \begin{itemize}
 \item Its bound caps $d_3(v)$, for instance $d_3(v)\le 87$ in the proof of $\R(3,3,7)\le 129$.
 \item Applied to the colouring on $N_3(v)$, which has no red or blue triangle and no green $K_{k-1}$, it bounds from below the number of red or blue edges inside $N_3(v)$ (Lemma~\ref{lem:line}(a)).
-The density inequality (Lemma~\ref{lem:density}) counts vertex triples, and this number enters it on the side opposite the terms that the mixed caps bound from above, so it needs a lower bound.
+The density inequality (Lemma~\ref{lem:density}) counts vertex triples: six times the number of triangles whose edges are all red or blue equals a sum of terms determined by the profiles plus twice the sum of this number over all $v$.
+The mixed caps bound those triangles from above, so this number needs a lower bound.
 \end{itemize}
 The proof of Theorem~\ref{thm:336} needs no bound of this kind.
 
 \subsection{What is proved by hand and what by computer}
 
-\emph{Hand proofs.}
+\paragraph{Hand proofs.}
 The bounds marked ``hand'' in Table~\ref{tab:upper} have complete proofs that can be checked by hand, once their inputs are granted.
 Some inputs, such as $\R(3,3,4)=30$ \cite{CFIM16}, were themselves proved by computer.
 Besides earlier results of this paper, these inputs are:
@@ -279,14 +285,15 @@ Besides earlier results of this paper, these inputs are:
 \item for the first three bounds of Proposition~\ref{prop:supp} only, the starred entries.
 \end{itemize}
 
-\emph{Computer-assisted proofs.}
+\paragraph{Computer-assisted proofs.}
 The other upper bounds are computer-assisted: Theorems~\ref{thm:ladder} and~\ref{thm:444b}, and the results of Section~\ref{sec:five}.
 Floating-point solvers were used only to find certificates and in the negative experiments we report.
 Every certificate is verified in exact rational arithmetic.
 Theorem~\ref{thm:444b} uses the computer only for an exact check of one linear identity among the probabilities of colour patterns on a random ordered quadruple of vertices.
 
-\emph{Lower bounds.}
-The lower bounds rest on explicit witnesses, checked by exact searches, and for $\R(3,3,15)$ also through Lemma~\ref{lem:cert}.
+\paragraph{Lower bounds.}
+The lower bounds rest on explicit witnesses, checked by exact searches.
+For $\R(3,3,15)$ the green cliques are also bounded through a certifier argument (Lemma~\ref{lem:cert}, Section~\ref{sec:extend}), which needs no clique search in the extended colouring.
 
 No upper-bound argument of ours, inputs aside, uses a SAT unsatisfiability result or a catalogue of critical colourings.
 The checking programs are in the ancillary files, and Section~\ref{sec:verify} lists the few that use libraries beyond the standard ones.
@@ -533,7 +540,7 @@ So
 \]
 
 \emph{Step 2: common neighbours across a green edge.}
-For a green edge $xy$, the $H$-neighbourhoods of $x$ and $y$ lie among the other $n-2$ vertices, and the vertices among these in neither form $N_3(x)\cap N_3(y)$.
+For a green edge $xy$, the $H$-neighbourhoods of $x$ and $y$ lie among the other $n-2$ vertices, and those in neither $H$-neighbourhood form $N_3(x)\cap N_3(y)$.
 By Lemma~\ref{lem:caps} with $i=j=3$,
 \[
 |N_3(x)\cap N_3(y)|\le C_{33}=\R(3,3,k-2)-1\le U-1,
@@ -563,7 +570,7 @@ and the constant term is $-(U+1-n)(n-1)$.
 \end{proof}
 
 \begin{lemma}[Density inequality]\label{lem:density}
-For each admissible $h$, let $m_{k-1}(n-1-h)$ be a valid lower bound.
+For each admissible $h$, let $m_{k-1}(n-1-h)$ be a valid lower bound for $(3,3,k-1;n-1-h)$-colourings.
 Then every $(3,3,k;n)$-colouring satisfies $\sum_v\Psi(h_v)\le 0$, where
 \[
 \Psi(h)=\Psi_{n,k}(h)=h\big(2h-n-3(k-1)\big)+2\,m_{k-1}(n-1-h)\;\big[\,+\,p_k(h)\,\big].
@@ -908,7 +915,7 @@ h_{\min}\le h\le\min(2D,n-1),
 where $h_{\min}=\max(0,n-B_{k-1})$.
 \begin{enumerate}[label=(\roman*)]
 \item If $F$ or $\Psi$ is positive at every admissible $h$, then $n$ is excluded by Lemma~\ref{lem:line}(b).
-\item Otherwise, for each $f\in\{F,\Psi\}$ let $h^*_f$ be the least real $h\ge h_{\min}$ at which the lower convex hull of the points $(h,f(h))$, $h$ admissible, is at most $0$.
+\item Otherwise, for each $f\in\{F,\Psi\}$ let $h^*_f$ be the least real $h\ge h_{\min}$ at which the lower convex hull of the points $(h,f(h))$, $h$ admissible, viewed as a piecewise-linear function on $[h_{\min},\min(2D,n-1)]$, is at most $0$.
 Then $\lceil nh^*_f/2\rceil$ is a valid lower bound.
 \begin{itemize}
 \item If $h^*_f=h_{\min}$, that is, $f(h_{\min})\le 0$, this holds because every $H$-degree is at least $h_{\min}$.
@@ -918,7 +925,7 @@ This line lies below the hull, so it is a \emph{supporting line}:
 f(h)\ge\alpha-\beta h
 \]
 at every admissible $h$.
-Lemma~\ref{lem:line}(a) then gives $\lceil n\alpha/(2\beta)\rceil=\lceil nh^*_f/2\rceil$ (no supporting line with $\beta>0$ does better, as each lies below the hull and so is at most $0$ at $h^*_f$).
+Lemma~\ref{lem:line}(a) then gives $\lceil n\alpha/(2\beta)\rceil=\lceil nh^*_f/2\rceil$, as $\alpha/\beta=h^*_f$ (no supporting line with $\beta>0$ does better, as each lies below the hull and so is at most $0$ at $h^*_f$).
 \end{itemize}
 \item The recorded $m_k(n)$ is the largest of the bounds from $F$ and $\Psi$ and those that Lemma~\ref{lem:delete}(a) and~(b) give from the values at smaller orders, with $B_{k-1}$ in place of $\R(3,3,k-1)$ in~(a).
 \end{enumerate}
@@ -964,7 +971,7 @@ The run recomputes $B_6=88$, $B_7=129$ and $B_8=179$, agreeing with Section~\ref
 Its external inputs, the values and bounds for $\R(3,k)$ and $B_3,B_4,B_5$ from Table~\ref{tab:inputs}, are all unstarred, so it uses no unpublished bound.
 
 For $9\le k\le 15$, it is $\Psi$ that excludes $B_k$ by Lemma~\ref{lem:line}(b): its minimum over the admissible $h$ at $n=B_k$, in the last row of Table~\ref{tab:ladder}, is positive, whereas $F$ is negative at $h=2D$, the largest admissible $h$.
-In every column this minimum is attained at $h=2D$, where $p_k(2D)=0$, so it equals
+In every column this minimum is attained at $h=2D$, where $p_k(2D)=0$ (for odd $k$ as $p_k=0$, and for $k=10,12,14$ as $D=40,58,76$ is even), so it equals
 \[
 2D\big(4D-B_k-3(k-1)\big)+2m_{k-1}(z),\qquad z=B_k-1-2D.
 \]
@@ -1005,14 +1012,14 @@ Each row states a claimed value of $m_k(n)$ and, for each $f\in\{F,\Psi\}$, cert
 \end{itemize}
 
 \emph{The checker.}
-A checker that does not import the generating program treats the rows in the order of the procedure, in exact rational arithmetic.
+The checker, which shares no code with the generating program, treats the rows in the order of the procedure, in exact rational arithmetic.
 For each recorded line it evaluates $f$ from its definition, with the bracket $p_k$ and, in $\Psi$, the values $m_{k-1}$ it has already verified.
 It then checks the hypotheses of Lemma~\ref{lem:line}(a): $\beta>0$, and $f(h)\ge\alpha-\beta h$ at every admissible $h$.
 Summed over the rows, there are $420{,}545$ admissible degrees.
 It accepts the claimed $m_k(n)$ only if it is at most the largest of the two certified bounds and those that Lemma~\ref{lem:delete}(a) and~(b) give from the values it has verified at smaller orders.
 
 \emph{The bounds $B_k$.}
-Finally, for $k\le 5$ it checks that $B_k$ is the input, and for $6\le k\le 15$ that at $n=B_k$, which has no row, one of $F$ and $\Psi$ is positive at every admissible $h$, so that Lemma~\ref{lem:line}(b) excludes $B_k$.
+Finally, for $k\le 5$ it checks that $B_k$ is the input, and for $6\le k\le 15$ that at $n=B_k$, for which the certificate states no $m_k(n)$ but names the excluding inequality, that inequality is positive at every admissible $h$, so that Lemma~\ref{lem:line}(b) excludes $B_k$.
 \end{proof}
 
 \section{Weighted triangle identities}\label{sec:types}
@@ -1414,7 +1421,7 @@ L-291b-443g=108+318x+50y-6xy.
 
 For fixed $y\le 22$ this increases in $x$, as $318-6y\ge 186$, so it is at least $108+50y\ge 108$, with equality only at $(62,275,345)$.
 There the floors add $3$, $2$ and $3$, as $39\cdot 275$, $87\cdot 275$ and $45\cdot 345$ are odd ($154\cdot 345$ is even), so $\Phi$ itself is $116$.
-Every other admissible profile has floor-free value at least $158$, so the margin is $116$.
+Every other admissible profile has floor-free value at least $158$, attained only at $(63,275,344)$, where $x=0$ and $y=1$, so the margin is $116$.
 \end{itemize}
 
 \emph{Without the starred inputs.}
@@ -1441,7 +1448,7 @@ As $1283/6>188$, the minimum is $26$, at $(60,128,269)$, and the margin is $26$.
 on $247\le s\le 261$.
 As $1918/6>261$, the floor-free minimum is $271$, at $(83,178,443)$.
 There the floors add $3$, as $27\cdot 83$ is odd, and $1$, as $275\cdot 443$ is odd, so $\Phi=275$.
-Every other admissible profile has $s\le 260$ and floor-free value at least $626$, so the margin is $275$.
+Every other admissible profile has $s\le 260$ and floor-free value at least $626$, the value at $s=260$ and $b=178$, that is, at $(82,178,444)$, so the margin is $275$.
 
 \item $(3,5,6)$, $n=685$: the caps are now $(86,275,345)$ and $(40,87,45,154)$, and
 \[
@@ -1450,7 +1457,7 @@ Every other admissible profile has $s\le 260$ and floor-free value at least $626
 with $b=275-x$, $g=345-y$, $r=64+x+y$ and $x+y\le 22$.
 As $315-6y\ge 183$, the minimum is $273$, only at $(64,275,345)$.
 There the floors add $2$ and $3$, as $87\cdot 275$ and $45\cdot 345$ are odd, so $\Phi=278$.
-Every other admissible profile has floor-free value at least $317$, so the margin is $278$.
+Every other admissible profile has floor-free value at least $317$, attained only at $(65,275,344)$, so the margin is $278$.
 \end{itemize}
 
 \emph{The computer check.}
@@ -1475,7 +1482,7 @@ W-\sum_iw_i\lfloor 17d_i/2\rfloor-\sum_{i\ne j}(w_i+2w_{ij})\lfloor 29d_i/2\rflo
 \]
 with the sign conditions of Section~\ref{sec:types} and also $w_1\ge 0$, as $M_1$ need not vanish.
 
-Under these conditions, which give rainbow triangles coefficient zero, no weights exclude any order.
+Under these conditions, which give rainbow triangles coefficient zero, no weights exclude any order $n\le 229$ (for $n\ge 230$ no profile is admissible).
 Indeed, averaging the weights over the permutations of the colours preserves the conditions and, as the admissible profiles are closed under permuting entries, positivity of $\Phi$ at all of them.
 For symmetric weights, however, rainbow triangles have coefficient zero only if $w_{12}=w_{13}=w_{23}=0$, and then
 \[
@@ -1494,7 +1501,7 @@ So we count patterns on four vertices instead.
 \item Exact identities relate these quantities (Lemma~\ref{lem:444id}).
 \end{itemize}
 Eliminating the triangle densities gives $\sum_v\Phi(\mathbf d(v))\le 0$ as in step~(ii) (Theorem~\ref{thm:444a}).
-Theorem~\ref{thm:444b} uses eight caps, three of them from Theorem~\ref{thm:444a}, and a sum-of-squares term.
+Theorem~\ref{thm:444b} uses eight caps, three of which Theorem~\ref{thm:444a} also uses, and a sum-of-squares term.
 Notation introduced in this section is local to it.
 
 \paragraph{The random quadruple.}
@@ -2064,13 +2071,13 @@ A certificate as in Lemma~\ref{lem:flagcert} for $\bt=(4,4,4)$, $n=198$ and $s=5
 \item It has $1581$ cap and lower rows, conditioned on the colouring of $x_0,\dots,x_3$, with $Y$ of size $1$ to $4$.
 \item It has $233$ squares:
 \begin{itemize}
-\item $113$ at a red edge with $9$ types, at a monochromatic, a two-coloured and a rainbow triangle with $27$ types, and at a vertex with $18$ types of unordered pairs, and
+\item $113$ ordinary squares: at a red edge ($9$ types), at a monochromatic, a two-coloured or a rainbow triangle ($27$ types), and at a vertex ($18$ types of unordered pairs); and
 \item $120$ localised squares at a red edge, with the constants $q=17$, $29$, $75$ and $76$ (the cap $76$ less $1$ gives $75$ for $N_1(x_0)$, which contains $x_1$), and with the lower degree bound.
 \end{itemize}
 \item The inputs are $\R(3,4,4)\le 77$, so that every colour degree is at most $76$, $\R(3,3,4)=30$, $\R(3,3,3)=17$, $\R(4,4)=18$, $\R(3,4)=9$ and $\R(3,3)=6$.
 \item The multipliers are dyadic rationals and the square vectors are integral.
 \end{itemize}
-In exact arithmetic, the largest value in (i) over the $133$ orbits is $-3.05\cdot 10^{-9}$, and the least value in (ii) over the $528$ admissible profiles is $3.05\cdot 10^{-9}$.
+In exact arithmetic, the largest value in (i) over the $133$ orbits is $-3.05\cdot 10^{-9}$, and the least value in (ii) over the $528$ admissible profiles is $3.05\cdot 10^{-9}$, so its margin, as defined below, is about $6.1\cdot 10^{-9}$.
 A second program views every term of the certificate as a function of the colouring of $K_6$ on $(x_0,\dots,x_5)$, which changes no expectation, as no term involves $x_5$.
 It evaluates (i) over the $3929$ orbits of $S_6\times S_3$ on colourings of $K_6$ without a monochromatic $K_4$, by exact integer counts over all $3^{15}$ labelled colourings, and finds the largest value in (i) to be $-3.05\cdot 10^{-9}$ as well (to these digits; exactly, it is slightly smaller) and the same least value in (ii).
 \end{proof}
@@ -2078,43 +2085,48 @@ It evaluates (i) over the $3929$ orbits of $S_6\times S_3$ on colourings of $K_6
 \paragraph{Comparison with other versions.}
 Theorem~\ref{thm:r444five} supersedes Theorems~\ref{thm:444a} and~\ref{thm:444b}.
 Below, the relaxation at order $n$ is \emph{decided} if the floating-point optimum of its semidefinite programme is positive beyond solver precision, so that a certificate is to be expected, and \emph{undecided} if this optimum is $0$ to solver precision, as in Remark~\ref{rem:limits}.
-Here the programme maximises the margin of a certificate of the given form under a normalisation, the margin being the sum of the slacks in (i) and (ii) of Lemma~\ref{lem:flagcert}.
+Here the programme maximises the margin of a certificate of the given form under a normalisation, the \emph{margin} being the least slack in (i) of Lemma~\ref{lem:flagcert} over the colourings of $K_s$ plus the least slack in (ii) over the admissible profiles.
 As the margin scales with the certificate, a certificate of this form exists exactly when this optimum is positive.
 So an optimum of $0$ to solver precision, or a slightly negative one as in Remark~\ref{rem:limits}, means that, up to solver precision, none exists.
 \begin{itemize}
 \item Without the localised squares, the same method gives certificates for $n=218$, $212$, $208$ and $204$, of which only the last is in the ancillary files, and in floating point its relaxation is decided down to $n=200$.
-\item The five-vertex model of Theorem~\ref{thm:r34five} (the \emph{mixture model}, described under ``Certificates and margins'' below), in which the profile of $x_0$ is an unknown mixture of admissible profiles, also gives $\R(4,4,4)\le 200$.
-Its certificate, \texttt{R444\_200.json}, is in the folder \texttt{flag5\_r34k/} of the ancillary files.
+\item The five-vertex model of Theorem~\ref{thm:r34five} (the \emph{mixture model}, described under ``Certificates and margins'' below) also gives $\R(4,4,4)\le 200$.
+It differs from the model of Theorem~\ref{thm:r444five} in its terms: a coefficient for each star pattern, squares over ordered pairs that may combine single vertices and pairs, and no localised squares.
+Its certificate, \texttt{flag5\_r34k/certificates/R444\_200.json}, is in the ancillary files.
 \item The four-vertex method of Section~\ref{sec:444} with several squares reaches $219$, and its full semidefinite relaxation is undecided at $218$.
 \end{itemize}
 
 \paragraph{Why it stops here.}
-In the certificate the multiplier weight sits on the cap rows
+In the certificate of Theorem~\ref{thm:r444five} the multiplier weight sits on rows with small caps: the cap rows
 \[
 |N_i(u)\cap N_i(v)|\le 17
 \]
-for an edge $uv$ of colour $i$, which come from $\R(4,4)=18$.
+for an edge $uv$ of colour $i$, which come from $\R(4,4)=18$, and the four-rooted cap rows
+\[
+|N_i(x)\cap N_i(y)\cap N_j(z)\cap N_j(w)|\le 3
+\]
+for an edge $xy$ of colour $i$ and an edge $zw$ of colour $j\ne i$, which come from $\R(2,2,4)=4$.
 The degree cap $76$ carries almost no weight.
 Correspondingly, a better bound for $\R(3,4,4)$ alone did not help in our runs.
 With the hypothesis $\R(3,4,4)\le 75$ in place of $77$ the relaxation at $n=197$ is still undecided (we did not rerun this model with our bound $\R(3,4,4)\le 73$ of Theorem~\ref{thm:r34five}), and the mixture model stops at $200$ with $\R(3,4,4)\le 73$ as with $77$.
 
-At $n=197$ the relaxation is undecided to solver precision, and it stays so with either of two six-vertex extensions, localised squares at triangles and two-vertex flags at an edge.
+At $n=197$ the relaxation is undecided to solver precision, and it stays so with either of two six-vertex extensions: localised squares at a triangle root, or squares at an edge root summed over pairs of further vertices, as at a vertex root.
 Even under the extra hypothesis that every vertex has a regular profile, with entries differing by at most $1$, the relaxation is decided numerically at $197$ but not at $196$.
 So conditioning on profiles could gain at most one order.
 
 \paragraph{Certificates and margins.}
-For the certificates of Theorem~\ref{thm:r34five}, and the mixture-model certificate for $\R(4,4,4)\le 200$ above, the star term has a coefficient for each of the $3^4$ colour patterns of the star, and the search treats the law of the profile of $x_0$ as an unknown mixture of the admissible profiles.
+For the certificates of Theorem~\ref{thm:r34five}, and the mixture-model certificate for $\R(4,4,4)\le 200$ above, the star term has a coefficient for each of the $3^4$ colour patterns of the star.
+The search treats the law of the profile of $x_0$ as an unknown mixture of the admissible profiles; as for every certificate of Lemma~\ref{lem:flagcert}, the check is then made at each admissible profile.
 Each certificate is a function $F$, the star term plus nonnegative multiples of cap and lower rows minus nonnegative multiples of squares, with
 \[
 \min\mathrm{Sym}\,F>\max J_G,
 \]
 the minimum over the colourings of $K_5$ without a forbidden clique and the maximum over the admissible profiles.
 For any constant $C$ between these two values, $C-F$, with $C$ absorbed into its star term, satisfies (i) and (ii) of Lemma~\ref{lem:flagcert}.
-The \emph{margin} is
+For each such $C$, the least slack in (i) plus the least slack in (ii) is the same, so the margin, as defined above, is
 \[
-\min\mathrm{Sym}\,F-\max J_G,
+\min\mathrm{Sym}\,F-\max J_G.
 \]
-the sum of the slacks in (i) and (ii).
 
 \begin{theorem}[certificates checked by computer]\label{thm:r34five}
 \begin{gather*}
@@ -2183,7 +2195,7 @@ None has a profile row of the recursive kind.
 So they use only the inputs of Table~\ref{tab:inputs} and, at $k=7$ and $8$, the bounds just proved, through the caps.
 
 They are checked in exact arithmetic over the $193$ orbits of $S_5\times\mathbb Z_2$ on the $29{,}197$ labelled colourings of $K_5$ with no red and no blue triangle, and over the admissible profiles.
-The least values in (ii) are about $1.9\cdot10^{-7}$, $3.1\cdot10^{-8}$ and $1.5\cdot10^{-8}$.
+The largest value in (i) is $0$ for each, and the least values in (ii) are about $1.9\cdot10^{-7}$, $3.1\cdot10^{-8}$ and $1.5\cdot10^{-8}$, which are therefore also the margins.
 \end{proof}
 
 Theorem~\ref{thm:flagladder} lowers the third bound to $173$.
@@ -2208,7 +2220,7 @@ Each claimed $m_k(n)$ must be at most the largest of
 \item Lemma~\ref{lem:delete}(a) and~(b), and
 \item an accepted certificate value at $(k,n)$.
 \end{itemize}
-\item Finally it checks the exclusion of $B_k$, by a certificate or by $\Psi>0$ at every admissible $h$.
+\item Finally, for $k\ge 6$, it checks the exclusion of $B_k$, by a certificate or by $\Psi>0$ at every admissible $h$; for $k\le 5$ it checks that $B_k$ is the input $17$, $30$ or $57$.
 \end{enumerate}
 No bound on $\R(3,3,k)$ with $k\ge 6$ is an input: each $B_k$ is treated as infinite until the chain excludes it, so every bound $B_j$ with $j\ge 6$ used at a level is proved earlier in the chain.
 
@@ -2243,7 +2255,6 @@ The optimal profile mixture puts weight $0.89$ on $(17,27,27)$, and adding the e
 
 For $\R(3,3,k)$ the five-vertex cutting-plane searches at $(3,3,6;85)$, $(3,3,7;124)$ and $(3,3,8;172)$ were stopped without a certificate.
 When they were stopped, the cutting-plane relaxations still had points satisfying every cut with slack about $3\cdot10^{-7}$, $6.5\cdot10^{-8}$ and $2.5\cdot10^{-8}$; a certificate appears only once this slack becomes negative.
-So these searches are inconclusive: they found no certificate, but did not show that none exists.
 So these searches are inconclusive: they found no certificate, but did not show that the optimum is $0$.
 Neither the four- nor the five-vertex search excludes $(3,3,5;56)$.
 With $s=4$ nothing is gained for $\R(3,3,k)$ above $k=6$.
@@ -2286,7 +2297,7 @@ For $k=13$ it is one less than $\R(5,13)\ge 233$.
 
 For $k=10$ no known $(5,10)$-colouring is as large as the survey's $149$-vertex witness for $\R(3,3,10)$.
 The largest, of Exoo and Tatarevic \cite{ET15} (see \cite[Table~3]{Kuz16}), has $148$ vertices and is not a circulant.
-Although it splits edge by edge, it gives only $149$.
+Although it splits edge by edge, it gives only $\R(3,3,10)\ge 149$, one below the survey's $\R(3,3,10)\ge 150$.
 For $k=15$ we instead add vertices to another split of the seed for $k=14$ (Section~\ref{sec:extend}).
 
 The splits are ours.
@@ -2338,7 +2349,7 @@ For a set $S$ of new vertices let
 \[
 A_S=\bigcup_{x\in S}A_x.
 \]
-A green clique of $F$ is $S\cup T$, where $S$ is a green clique of new vertices and $T$ a green clique of $H-A_S$.
+Every green clique of $F$ is $S\cup T$, where $S$, its set of new vertices, is a green clique and $T$ is a green clique of $H-A_S$.
 A vertex $w$ of $H$ \emph{certifies} $S$ if $w$ and all its red and blue neighbours in $H$ lie in $A_S$.
 
 \begin{lemma}\label{lem:cert}
@@ -2353,11 +2364,12 @@ A vertex of $T$ is outside $A_S$, so it is not a red or blue neighbour of any $w
 So $T\cup W$ is a green clique of $H$, and $|T|+|W|\le q$.
 \end{proof}
 
+Let $W_S$ be the set of certifiers of $S$, and $\omega(W_S)$ the green clique number of $H$ on $W_S$.
+By Lemma~\ref{lem:cert} with $W$ a largest green clique in $W_S$, every green clique $T$ of $H-A_S$ has $|T|\le q-\omega(W_S)$.
 So $F$ has green clique number at most $q+1$ if every green clique $S$ of new vertices satisfies
 \[
-|S|\le 1+\omega(W_S),
+|S|\le 1+\omega(W_S).
 \]
-where $W_S$ is the set of certifiers of $S$ and $\omega(W_S)$ is the green clique number of $H$ on $W_S$.
 Checking this needs no clique search in $F$.
 It runs over the green cliques of new vertices, and needs only the green clique numbers of the sets $W_S$.
 
@@ -2436,12 +2448,15 @@ The anchors and the colours among the new vertices were found by a SAT search ov
 In none of the $416$ circulant splits of the seed, counted up to exchanging red and blue, does this family give more than eleven new vertices.
 
 Call vertices $u,v$ of $H$ \emph{compatible} if they have no common red neighbour or no common blue neighbour, as holds whenever $uv$ is red or blue.
-Two copies $y_u,y_v$ with $uv$ green cannot be green to each other, as the common green neighbourhood of $u$ and $v$ contains a green $K_{11}$.
+Two copies $y_u,y_v$ with $uv$ green cannot be green to each other.
+Otherwise $u$, $v$, $y_u$ and $y_v$ would be pairwise green, and with a green $K_{11}$ in the common green neighbourhood of $u$ and $v$, whose vertices are also green to both copies, they would form a green $K_{15}$.
+Such a $K_{11}$ exists for every green pair: a clique search over the pairs $\{0,d\}$ with $d$ a green distance finds one, which suffices by translation invariance.
 They can be red only if $u$ and $v$ have no common red neighbour, and blue only if they have no common blue neighbour.
 So the anchors are pairwise compatible.
 In our enumeration of the splits, at most six vertices of $H$ are pairwise compatible, so there are at most six anchors and six copies.
 
-Two new vertices of the second kind cannot be green to each other either, as $H$ minus the at most six anchors still contains a green $K_{13}$.
+Two new vertices of the second kind cannot be green to each other either.
+Both are green to every vertex of $H$ outside the at most six anchors, and $H$ minus the anchors still contains a green $K_{13}$, which with the two of them would form a green $K_{15}$.
 Indeed, as $H$ is vertex-transitive, a set meeting every green $K_{13}$ has at least $266/13>20$ vertices.
 So every pair of them is red or blue, and as $\R(3,3)=6$ there are at most five of them.
 
@@ -2457,7 +2472,7 @@ The command \texttt{sh run\_all.sh} runs the quick checks in a few minutes, \tex
 The checks of Theorems~\ref{thm:r444five}, \ref{thm:r34five} and~\ref{thm:flagladder}, the second checker for Theorem~\ref{thm:r444five}, the full-matrix searches of \texttt{check\_colouring\_full.cpp} and the direct clique searches for Theorem~\ref{thm:ext15} run only with \texttt{--full}.
 Of Section~\ref{sec:five}, the quick mode checks Theorem~\ref{thm:flag678} and the weaker bound $\R(4,4,4)\le 204$.
 \begin{itemize}[leftmargin=1.2em]\raggedright
-\item \texttt{verify\_hand\_proofs.py}: the main steps of the proofs in Sections~\ref{sec:three} and~\ref{sec:types} (some values quoted only in remarks are not checked);
+\item \texttt{verify\_hand\_proofs.py}: the main steps of the proofs in Sections~\ref{sec:three} and~\ref{sec:types} (some intermediate values, such as gradients and the published-only reductions in the proof of Proposition~\ref{prop:supp}, and some values quoted only in remarks, are not checked);
 \item \texttt{bootstrap.py}, which runs the procedure of Section~\ref{sec:ladder} and writes its certificate \texttt{tables.json}, and \texttt{verify\_bootstrap.py}, a checker that shares no code with it: Theorem~\ref{thm:ladder};
 \item \texttt{verify\_cascade.py} and \texttt{verify\_cascade\_published\_only.py}, with and without the unpublished inputs: the program in the proof of Proposition~\ref{prop:supp};
 \item \texttt{verify\_r444.py}: Lemma~\ref{lem:444id}, Theorem~\ref{thm:444a}, and identity \eqref{eq:id225} with the values of $J$ in Theorem~\ref{thm:444b};
@@ -2503,7 +2518,7 @@ No method here improves $\R(3,3,5)\le 57$, on which every bound for $\R(3,3,k)$ 
 
 One order below the bounds of Theorems~\ref{thm:r444five} and~\ref{thm:r34five}, except the starred $245$ (the order $244$ was not tried), the five-vertex relaxations have optimum $0$ to solver precision.
 We also found no five-vertex certificate for $(3,3,6;85)$, $(3,3,7;124)$ or $(3,3,8;172)$ (Section~\ref{sec:five} and Remark~\ref{rem:limits}).
-Further progress for these numbers needs larger flags, new valid inequalities, or better inputs.
+Further progress for these numbers needs certificates on six or more vertices, new valid inequalities, or better inputs.
 
 Searches in restricted families, namely circulant colourings and block and extension constructions, found no $(3,3,7;85)$-colouring and no $(3,4,4;55)$-colouring, which would improve the lower bounds $\R(3,3,7)\ge 85$ and $\R(3,4,4)\ge 55$ listed in the survey, respectively.
 A failure in a restricted family proves nothing in general.
@@ -2512,7 +2527,7 @@ A failure in a restricted family proves nothing in general.
 Much of the work reported here was carried out with two AI systems, used under the direction of the author: OpenAI's Codex, based on GPT-6, in the first stage of the project, and Claude Opus~5.5, a large language model developed by Anthropic, in the later stages.
 Between them they searched for the arguments and certificates, wrote the search programs, the checking programs and the Lean files, and drafted the text.
 Of the search programs only \texttt{bootstrap.py} is in the ancillary files; all the checking programs are.
-Every certificate and witness is checked in exact arithmetic by the programs in the ancillary files, which can be run independently of the model.
+Every certificate and witness is checked in exact arithmetic by the programs in the ancillary files, which can be run independently of the AI systems.
 The author takes full responsibility for the contents of this paper.
 
 \pdfbookmark[1]{References}{references}
@@ -2528,7 +2543,7 @@ The author takes full responsibility for the contents of this paper.
 \bibitem{GR13} J.~Goedgebeur and S.~P.~Radziszowski, New computational upper bounds for Ramsey numbers $R(3,k)$, \emph{Electron.\ J.\ Combin.} 20(1) (2013), \#P30.
 \bibitem{Goo59} A.~W.~Goodman, On sets of acquaintances and strangers at any party, \emph{Amer.\ Math.\ Monthly} 66 (1959), 778--783.
 \bibitem{Goo85} A.~W.~Goodman, Triangles in a complete chromatic graph with three colors, \emph{Discrete Math.} 57 (1985), 225--235.
-\bibitem{GC24} P.~J.~Goulart and Y.~Chen, Clarabel: an interior-point solver for conic programs with quadratic objectives, preprint, arXiv:2405.12762, 2024.
+\bibitem{GC24} P.~J.~Goulart and Y.~Chen, Clarabel: an interior-point solver for conic programs with quadratic objectives, \emph{Math.\ Program.\ Comput.} (2026), doi:10.1007/s12532-026-00320-7; arXiv:2405.12762.
 \bibitem{GG55} R.~E.~Greenwood and A.~M.~Gleason, Combinatorial relations and chromatic graphs, \emph{Canad.\ J.\ Math.} 7 (1955), 1--7.
 \bibitem{HW20} X.~He and Y.~Wigderson, Multicolor Ramsey numbers via pseudorandom graphs, \emph{Electron.\ J.\ Combin.} 27(1) (2020), \#P1.32.
 \bibitem{HH18} Q.~Huangfu and J.~A.~J.~Hall, Parallelizing the dual revised simplex method, \emph{Math.\ Program.\ Comput.} 10 (2018), 119--142.

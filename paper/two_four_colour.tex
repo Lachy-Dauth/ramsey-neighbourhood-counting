@@ -63,7 +63,7 @@ We give upper bounds for the Ramsey numbers $\R(3,k)$ with $24\le k\le 50$, for 
 They come from an exact bootstrap of lower bounds on the number of edges of triangle-free graphs with bounded independence number.
 It starts from the published values and lower bounds of Goedgebeur and Radziszowski.
 For instance, $\R(3,24)\le 201$, $\R(3,30)\le 297$ and $\R(3,50)\le 729$.
-With in addition the table of Backelin's unrefereed report, the bounds are $1$ to $3$ lower for $24\le k\le 36$ except $k=35$.
+If the table of Backelin's unrefereed report is also used, the bounds are $1$ to $3$ lower for $24\le k\le 36$, except $k=35$.
 
 Deleting vertices from the quartic residue graphs of Lindsay and Cain gives $\R(4,21)\ge 260$ and $\R(4,24)\ge 370$.
 Finally, we use the four-colour form of the neighbourhood recurrence, with $\R(3,4,4)\le 73$ and $\R(4,4,4)\le 198$ from a companion paper and the survey's $\R(3,3,3,4)\le 149$.
@@ -119,7 +119,7 @@ The four-colour bounds (Section~\ref{sec:four}) follow by hand from $\R(3,3,3,4)
 
 A $(3,k;n)$-graph is a triangle-free graph on $n$ vertices with no independent set of size $k$.
 A $(3,k;n,e)$-graph is one with $e$ edges, and $e(3,k,n)$ is the least such $e$.
-As in \cite[Section~3]{DC26}, $m_k(n)$ is a \emph{valid lower bound} if every $(3,k;n)$-graph has at least $m_k(n)$ edges.
+By analogy with \cite[Section~3]{DC26}, where the term is used for three-colourings, $m_k(n)$ is a \emph{valid lower bound} if every $(3,k;n)$-graph has at least $m_k(n)$ edges.
 
 For a vertex $v$ of a $(3,k;n,e)$-graph $G$, $N(v)$ is independent, so $d_v\le k-1$.
 Moreover, $G_v=G-N[v]$, where $N[v]=N(v)\cup\{v\}$, is a $(3,k-1;n-1-d_v)$-graph, as an independent set of $G_v$ extends by $v$.
@@ -144,8 +144,9 @@ We bootstrap as in the ladder of \cite[Section~5]{DC26}, with this inequality in
 Level $k\ge 11$ uses the bound $B_{k-1}$ on $\R(3,k-1)$ and the valid lower bounds $m_{k-1}$ from level $k-1$.
 Level $11$ starts from $B_{10}=42$ \cite[Theorem~6]{GR13} and the values and lower bounds for $e(3,10,n)$ in \cite{GR13}.
 
-Level $k$ treats the orders $n=0,1,2,\dots$ in turn, records a valid lower bound $m_k(n)$, and stops at the first order it excludes, $B_k$.
+Level $k$ treats the orders $n=0,1,2,\dots$ in turn, records a valid lower bound $m_k(n)$, and stops at the first order it excludes, $B_k$, that is, the first $n$ at which it shows that no $(3,k;n)$-graph exists.
 So $\R(3,k)\le B_k$.
+In the same way, a value $e$, or a degree sequence, is excluded at order $n$ when no $(3,k;n,e)$-graph exists (with that degree sequence).
 We run the procedure twice, giving two \emph{chains}: one from the inputs of \cite{GR13} alone, and one that also uses the lower bounds of \cite{Back3} described after the list below.
 At order $n$ the procedure is as follows.
 \begin{enumerate}[label=(\roman*)]
@@ -211,7 +212,7 @@ Each exclusion is certified either by the neighbour-count test or by rational Fa
 
 \begin{theorem}[computer-assisted]\label{thm:r3k}
 From the published values and lower bounds of \cite[Theorem~2 and Tables~3--5]{GR13} and $\R(3,10)\le 42$ \cite[Theorem~6]{GR13}, $\R(3,k)$ is at most the value in the row ``\cite{GR13} only'' of Table~\ref{tab:r3k} for $24\le k\le 50$.
-With in addition the lower bounds on $e(3,k,n)$ in the table of \cite[Section~5]{Back3}, it is at most the value in the row ``with \cite{Back3}''.
+If the lower bounds on $e(3,k,n)$ in the table of \cite[Section~5]{Back3} are also used, $\R(3,k)$ is at most the value in the row ``with \cite{Back3}''.
 \end{theorem}
 
 \begin{table}[htbp]
@@ -249,12 +250,15 @@ The first row is $1$ to $3$ larger for $24\le k\le 34$ and $k=36$, and equals th
 
 Without the extra step, the chain from \cite{GR13} alone gives the same bounds for $11\le k\le 50$, except $\R(3,20)\le 146$ and $\R(3,35)\le 390$.
 This run is not among the certificates in the ancillary files.
-The chain from \cite{GR13} alone also raises seven lower bounds of \cite[Tables~9--11]{GR13} by one, to
+The chain from \cite{GR13} alone also reaches $e(3,13,51)\ge 178$ and $e(3,14,67)\ge 335$, which the comments column of \cite[Tables~9 and~10]{GR13} credits to Backelin.
+It raises seven further lower bounds of \cite[Tables~9--11]{GR13} by one, to
 \begin{gather*}
 e(3,13,58)\ge 261,\qquad e(3,14,69)\ge 366,\qquad e(3,14,70)\ge 382,\\
 e(3,15,n)\ge 516,\ 534,\ 553\ \text{and}\ 573\quad\text{for } n=82,\dots,85.
 \end{gather*}
-Backelin's unpublished tables may already contain these.
+These are values $m_k(n)$ recorded in the certificate of that chain, so the checker of Theorem~\ref{thm:r3k} verifies them.
+They lie beyond the range $n\le 43$ of \cite{Back3}.
+Backelin's unpublished manuscript, to which \cite{Rad26} credits $\R(3,17)\le 109$, may already contain them.
 
 \paragraph{Checking the certificates.}
 The certificates are checked by a program that does not import the generating code.
@@ -282,7 +286,7 @@ with \cite{Back3} & 50 & 59 & 68 & 77 & 87 & 97 & 109 & 121 & 132 & 145 & 158 & 
 \bottomrule
 \end{tabular}
 \end{center}
-So for $k\le 23$ the procedure improves no value of \cite{Rad26}.
+So for $11\le k\le 23$ the procedure improves no value of \cite{Rad26}.
 From \cite{GR13} alone it gives $\R(3,17)\le 109$ and $\R(3,20)\le 145$, which \cite{Rad26} credits to an unpublished manuscript of Backelin and to Lesser's thesis \cite{Les}, respectively.
 With the table of \cite{Back3} it gives $\R(3,16)\le 97$ and $\R(3,19)\le 132$, the values that \cite{Rad26} lists, citing \cite{Back3}.
 
@@ -347,7 +351,7 @@ The previous bounds are as follows.
 \item For $\R(4,24)$, the non-neighbourhood of a vertex of $Q_{457}$ ($Q_{457}$ is $114$-regular) has $342$ vertices, is $K_4$-free and has no independent $24$-set, as such a set would extend by the vertex.
 This gives $\R(4,24)\ge 343$.
 The survey lists no value for $\R(4,24)$.
-Its rules give $324$, by applying this inequality twice to $\R(4,22)\ge 314$ \cite{LinCa}.
+The inequality \cite[2.3(e)]{Rad26}, applied twice to $\R(4,22)\ge 314$ \cite{LinCa}, gives $324$.
 \end{itemize}
 
 The method does not reach $\R(4,23)\ge 320$, which would improve the bound $319$ that this inequality gives from $\R(4,22)\ge 314$.
@@ -366,6 +370,7 @@ Summing over $i$ gives
 \[
 n-1\le\sum_i(\R(\bt-\e_i)-1) .
 \]
+So such a colouring has $n\le\sum_i\R(\bt-\e_i)-3$, which is the recurrence.
 
 The recurrence improves to $\R(\bt)\le\sum_i\R(\bt-\e_i)-3$ when $\sum_i\R(\bt-\e_i)$ is even and some $\R(\bt-\e_i)$ is even.
 Indeed, take a colouring as above of $K_n$ with $n=\sum_i\R(\bt-\e_i)-3$, which is odd.
@@ -406,18 +411,21 @@ From the survey's $\R(3,4,4,4)\le 1576$, the recurrence with parity gives $\R(4,
 The survey lists $6306$ and notes that $6301$ is implicit in \cite{Boz26}.
 
 With the survey's $\R(3,3,4,4)\le 450$ in place of $442$, that is, without $\R(3,4,4)\le 73$, the bound $\R(4,4,4)\le 198$ alone gives $\R(3,4,4,4)\le 1545$ and $\R(4,4,4,4)\le 6178$.
-The survey's $\R(3,4,4,4)\le 1576$, which it marks as implicit in \cite{Boz26}, comes from Boza's analogue of the parity clause \cite[Theorem~2.1]{Boz26}, which counts the triangles of one colour and needs conditions modulo~$3$.
-With our bounds it gives nothing more: its first condition, that the right-hand side of the recurrence is not $\equiv 1\pmod 3$, fails at each step, as $442$, $1522$ and $6082$ are all $\equiv 1\pmod 3$.
+The survey's $\R(3,4,4,4)\le 1576$, which it marks as implicit in \cite{Boz26}, comes from Boza's analogue of the parity clause \cite[Theorem~2.1]{Boz26}, which counts the triangles of one colour.
+It lowers the right-hand side $P=\sum_i\R(\bt-\e_i)-2$ of the recurrence by one when three conditions modulo~$3$ all hold, the first being $P\not\equiv 1\pmod 3$.
+From Boza's $\R(4,4,4)\le 229$ and the survey's $\R(3,3,4,4)\le 450$ it gives $229+3\cdot 450-2-1=1576$.
+With our bounds it gives nothing more.
+At the three steps $P$ is $442$, $1522$ and $6082$ (before any parity improvement), all $\equiv 1\pmod 3$, so the first condition fails.
 
 \paragraph{Four triangle-free colours.}
 We also tried to improve $\R(3,3,3,3)\le 62$ \cite{FKR04}, that is, to exclude colourings of $K_{61}$ with four triangle-free colours, by certificates analogous to those for $\R(4,4,4)$ in \cite[Sections~7 and~8]{DC26}.
 Such a certificate exists only if a flag relaxation, here with four- or five-vertex patterns and with four-colour analogues of the local caps of \cite[Lemmas~2.1 and~2.3]{DC26} among its constraints, is infeasible.
 As in Razborov's flag algebras \cite{Raz07}, the unknowns of the relaxation are the densities of the colourings of $K_4$ or $K_5$, the patterns, in a putative colouring of $K_{61}$.
-They are subject to linear constraints from the caps, such as $|N_i(v)\cap N_j(u)|\le\R(3,3)-1=5$ for $u\in N_i(v)$ and $j\ne i$, and to positive-semidefiniteness constraints.
+They are subject to linear constraints from the caps, such as $|N_i(v)\cap N_j(u)|\le\R(3,3)-1=5$ for $u\in N_i(v)$ and $j\ne i$ (an edge of colour $i$ or $j$ inside this set would form a triangle of that colour with $v$ or with $u$, so the set carries only the two other colours, both triangle-free), and to positive-semidefiniteness constraints.
 A certificate is a dual solution that proves the relaxation infeasible.
 For comparison, the six-vertex computation of Lidick\'y and Pfender \cite[Appendix~A]{LP21}, whose relaxation has no caps, gives only $\R(3,3,3,3)\le 65$.
 
-At $n=61$ each colour-$i$ degree is at most $\R(3,3,3)-1=16$, and the four colour degrees of a vertex sum to $60$.
+At $n=61$ each colour-$i$ degree is at most $\R(3,3,3)-1=16$ \cite{GG55}, and the four colour degrees of a vertex sum to $60$.
 So the \emph{profile} of a vertex, its sorted quadruple of colour degrees, is one of
 \[
 (12,16,16,16),\quad (13,15,16,16),\quad (14,14,16,16),\quad (14,15,15,16),\quad (15,15,15,15).
@@ -425,7 +433,8 @@ So the \emph{profile} of a vertex, its sorted quadruple of colour degrees, is on
 
 Both relaxations are numerically feasible.
 Floating-point solvers found an assignment of pattern densities meeting all their constraints.
-Splitting by profile does not help: they found one even when every vertex is required to have profile $(12,16,16,16)$.
+A case split by vertex profiles does not help either.
+The solvers found such an assignment even with the added requirement that every vertex has profile $(12,16,16,16)$, so the case of any such split that allows this profile at every vertex is not excluded.
 The four-vertex relaxation was solved as a linear programme by HiGHS \cite{HH18}, with its semidefinite constraint imposed by eigenvector cuts until no eigenvalue was below $-10^{-8}$.
 The five-vertex relaxation was solved as a semidefinite programme by Clarabel \cite{GC24} at tolerance $10^{-8}$.
 So we obtained no such certificate from these relaxations, and no bound follows.
@@ -446,14 +455,14 @@ The command \texttt{sh run\_all.sh --full} adds the long ones, among them the ch
 
 The checkers for this paper, in \texttt{two\_colour\_r3k/} and \texttt{two\_colour\_r4k/}, are written in Python and C with their standard libraries, and the C programs use POSIX threads.
 To run only these checks, use the commands in \texttt{two\_colour\_r3k/README.md} and the script \texttt{two\_colour\_r4k/verify\_all.sh}.
-The script \texttt{run\_all.sh} also needs a C++17 compiler, for the checks of \cite{DC26}, and uses NumPy, when it is installed, for one optional second checker in \texttt{flag5\_r444/} \cite[Section~10]{DC26}.
+The script \texttt{run\_all.sh} also needs a C++17 compiler, for the checks of \cite{DC26}, and uses NumPy, when it is installed, for an optional second checker in \texttt{flag5\_r444/} and its negative controls \cite[Section~10]{DC26}.
 Negative controls are all rejected: a weakened input, a zeroed multiplier, a removed sequence certificate, a value raised by one, a claimed bound below the proved one such as $\R(3,24)\le 199$, and a deleted vertex put back.
 
 \paragraph{Literature.}
 We searched arXiv and the web up to 23 October 2026 for earlier statements of our new bounds, and found none.
 \begin{itemize}
 \item For $\R(3,k)$ with $k\ge 24$ the survey lists no upper bounds, and the upper bounds of \cite{GR13} and of Lesser's thesis \cite{Les} stop at $k=16$ and $k=21$.
-Backelin's unpublished manuscript, to which \cite{Rad26} credits $\R(3,17)\le 109$, may contain bounds of this kind.
+Backelin's unpublished manuscript (Section~\ref{sec:r3k}) may contain bounds of this kind.
 \item For $\R(4,21)$ the best previous bound we know of, $257$, follows from $\R(4,20)\ge 252$ in the preprint \cite{Yu26}, which we have not checked.
 Without it the bound is $242$ \cite{SLZL}.
 \item For $\R(4,24)$ the survey lists nothing, and $343$ is implicit in \cite{LinCa}.
@@ -462,7 +471,7 @@ Without it the bound is $242$ \cite{SLZL}.
 Such a search cannot establish priority, and we would welcome pointers to any earlier source.
 
 \paragraph{Limitations.}
-For $k\le 23$ the bootstrap of Section~\ref{sec:r3k} improves none of the bounds in \cite{Rad26}.
+For $11\le k\le 23$ the bootstrap of Section~\ref{sec:r3k} improves none of the bounds in \cite{Rad26}.
 At $k=18$ it would give $\R(3,18)\le 120$ if its own lower bound $e(3,17,102)\ge 731$ were one larger.
 The second row of Table~\ref{tab:r3k} rests on the lower bounds of \cite{Back3}, whose proofs are largely unpublished.
 
@@ -473,7 +482,7 @@ The four-colour bounds rest on $\R(3,4,4)\le 73$ and $\R(4,4,4)\le 198$ \cite[Th
 \pdfbookmark[1]{Acknowledgements}{acknowledgements}
 Much of the work reported here was carried out with two AI systems, used under the direction of the author: OpenAI's Codex, based on GPT-6, and Claude Opus~5.5, a large language model developed by Anthropic.
 They searched for the arguments and certificates, wrote the search programs for this paper (not included) and the checking programs in the ancillary files, and drafted the text.
-Every certificate and witness is checked in exact arithmetic by the programs in the ancillary files, which can be run independently of the model.
+Every certificate and witness is checked in exact arithmetic by the programs in the ancillary files, which can be run without either AI system.
 The author takes full responsibility for the contents of this paper.
 
 \pdfbookmark[1]{References}{references}
@@ -485,10 +494,11 @@ The author takes full responsibility for the contents of this paper.
 \bibitem{DC26} L.~Dauth, Neighbourhood counting and new bounds for small three-colour Ramsey numbers, companion paper, 2026. The theorem and section numbers cited are those of its first arXiv version.
 \bibitem{FKR04} S.~E.~Fettes, R.~L.~Kramer and S.~P.~Radziszowski, An upper bound of 62 on the classical Ramsey number $R(3,3,3,3)$, \emph{Ars Combin.} 72 (2004), 41--63.
 \bibitem{GR13} J.~Goedgebeur and S.~P.~Radziszowski, New computational upper bounds for Ramsey numbers $R(3,k)$, \emph{Electron.\ J.\ Combin.} 20(1) (2013), \#P30.
-\bibitem{GC24} P.~J.~Goulart and Y.~Chen, Clarabel: an interior-point solver for conic programs with quadratic objectives, preprint, arXiv:2405.12762, 2024.
+\bibitem{GC24} P.~J.~Goulart and Y.~Chen, Clarabel: an interior-point solver for conic programs with quadratic objectives, \emph{Math.\ Program.\ Comput.} (2026), doi:10.1007/s12532-026-00320-7; arXiv:2405.12762.
 \bibitem{GrY} J.~E.~Graver and J.~Yackel, Some graph theoretic results associated with Ramsey's theorem, \emph{J.\ Combin.\ Theory} 4 (1968), 125--175.
+\bibitem{GG55} R.~E.~Greenwood and A.~M.~Gleason, Combinatorial relations and chromatic graphs, \emph{Canad.\ J.\ Math.} 7 (1955), 1--7.
 \bibitem{HH18} Q.~Huangfu and J.~A.~J.~Hall, Parallelizing the dual revised simplex method, \emph{Math.\ Program.\ Comput.} 10 (2018), 119--142.
-\bibitem{Les} A.~Lesser, Theoretical and computational aspects of Ramsey theory, Examensarbeten i Matematik 3, Stockholms Universitet, 2001.
+\bibitem{Les} A.~S.~Lesser, Theoretical and computational aspects of Ramsey theory, Examensarbeten i Matematik 3, Stockholms Universitet, 2001, \url{https://www2.math.su.se/ramseytheory/sciramseyams.pdf}.
 \bibitem{LP21} B.~Lidick\'y and F.~Pfender, Semidefinite programming and Ramsey numbers, \emph{SIAM J.\ Discrete Math.} 35 (2021), 2328--2344; arXiv:1704.03592.
 \bibitem{LinCa} M.~Lindsay and J.~W.~Cain, Improved lower bounds on the classical Ramsey numbers $R(4,22)$ and $R(4,25)$, preprint, arXiv:1510.06102, 2015.
 \bibitem{Rad26} S.~P.~Radziszowski, Small Ramsey numbers, \emph{Electron.\ J.\ Combin.}, Dynamic Survey DS1.18 (revision 18, 24 April 2026), doi:10.37236/21.
