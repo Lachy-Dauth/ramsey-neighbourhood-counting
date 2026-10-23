@@ -41,7 +41,7 @@ the base value R(3,4,4) <= 77 in place of the input R(3,4,4) <= 73. It is the co
 involves R(3,4,4): the 'int' row with rho = (0,0,1,1,0,2), J = (2,3), a = (1,2) (entry 34 of `rows`, counting from 0), whose
 q = R(3,4,4) - 1 is 72 in `R355_316.json` and 76 here. Nothing else differs (the two files differ in one byte).
 The checker accepts it with the input R(3,4,5) <= 137 only, with the same margin 1.4675e-7, and R(3,4,5) <= 137
-itself uses base inputs only. So R(3,5,5) <= 316 does not depend on R(3,4,4) <= 73 (A, proof of Theorem 8.3).
+itself uses base inputs only. So R(3,5,5) <= 316 does not depend on R(3,4,4) <= 73 (proof of Theorem 8.3).
 The file's `R3` field is copied unchanged from `R355_316.json`, so it still lists R(3,4,4) <= 73. The checker
 ignores that field: the inputs that count are those given with `--input` or listed in the manifest.
 

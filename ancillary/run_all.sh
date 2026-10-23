@@ -1,13 +1,13 @@
 #!/bin/sh
-# Re-run the computational checks of the paper (Python 3 standard library, a C++17 and a C compiler).
+# Re-run the computational checks of the paper (Python 3 standard library and a C++17 compiler).
 #
 #   sh run_all.sh             quick mode: every check that finishes in a few minutes (about 4 minutes in total)
 #   sh run_all.sh --full      quick mode plus the long certificate checks and the direct clique searches
 #                             (about 1.5 to 2 hours on a 10-core laptop; the last step alone takes about 50 min)
 #   sh run_all.sh --controls  the expensive negative and positive controls of the flag certificates (about 2 hours)
 #
-# Works from any directory and exits non-zero as soon as a check fails.  Compilers: $CXX (default c++) and $CC
-# (default cc); Python: $PYTHON (default python3).  Build products and regenerated matrices are git-ignored
+# Works from any directory and exits non-zero as soon as a check fails.  Compiler: $CXX (default c++);
+# Python: $PYTHON (default python3).  Build products and regenerated matrices are git-ignored
 # (make clean).  Runtimes are listed in README.md.
 cd "$(dirname "$0")" || exit 2
 MODE=quick
@@ -75,23 +75,6 @@ quick() {
       in_dir flag_r33k tail_of 4 $PY check_r33k5.py certificates/five/k6/excl_86.json \
       certificates/five/k7/excl_125.json certificates/five/k8/excl_174.json
   run "extension_r3315: R(3,3,15) >= 278 (rebuild the witness, certcheck)" sh extension_r3315/check_all.sh
-  B3="--claim 16,97 --claim 19,132 --claim 23,185"
-  C50="--claim 24,200 --claim 25,215 --claim 26,230 --claim 27,245 --claim 28,261 --claim 29,278 --claim 30,295
-       --claim 31,312 --claim 32,331 --claim 33,349 --claim 34,369 --claim 35,389 --claim 36,408 --claim 37,429
-       --claim 38,450 --claim 39,471 --claim 40,492 --claim 41,513 --claim 42,536 --claim 43,559 --claim 44,582
-       --claim 45,606 --claim 46,630 --claim 47,654 --claim 48,679 --claim 49,704 --claim 50,729"
-  P50="--claim 17,109 --claim 20,145 --claim 24,201 --claim 25,216 --claim 26,231 --claim 27,247 --claim 28,264
-       --claim 29,280 --claim 30,297 --claim 31,315 --claim 32,333 --claim 33,351 --claim 34,370 --claim 35,389
-       --claim 36,409 --claim 37,429 --claim 38,450 --claim 39,471 --claim 40,492 --claim 41,513 --claim 42,536
-       --claim 43,559 --claim 44,582 --claim 45,606 --claim 46,630 --claim 47,654 --claim 48,679 --claim 49,704
-       --claim 50,729"
-  run "two_colour_r3k: R(3,k) <= ... for k <= 50, with Backelin's e(3,l;n) bounds" \
-      in_dir two_colour_r3k tail_of 2 $PY checker/check_r3k_v2.py --r310 42 certs/r3k_back3_seq_k50.json $B3 $C50
-  run "two_colour_r3k: R(3,k) <= ... for k <= 50, published (GR13) inputs only" \
-      in_dir two_colour_r3k tail_of 2 $PY checker/check_r3k_v2.py --r310 42 certs/r3k_pub_seq_k50.json --no-back3 $P50
-  run "two_colour_r3k: negative controls" in_dir two_colour_r3k sh -c \
-      "$PY checker/negative_controls_v2.py certs/r3k_back3_seq_k50.json && $PY checker/negative_controls_v2.py certs/r3k_pub_seq_k50.json && $PY checker/negative_controls_high.py certs/r3k_back3_seq_k50.json"
-  run "two_colour_r4k: R(4,21) >= 260 and R(4,24) >= 370 (rebuild, rcheck, qpsym, controls)" sh two_colour_r4k/verify_all.sh
 }
 
 full() {
@@ -115,8 +98,6 @@ full() {
     run "check_colouring_full: direct clique search of R_3_3_$1_n$2.txt (no symmetry used)" \
         ./check_colouring_full R_3_3_$1_n$2.txt 3 3 $1
   done
-  run "two_colour_r4k: direct rcheck of the 369-vertex graph for independent 24-sets (about 10 min on 10 threads)" \
-      sh two_colour_r4k/verify_all.sh --full
   run "check_colouring_full: direct clique search of the 277-vertex R(3,3,15) witness (about 50 min)" \
       ./check_colouring_full extension_r3315/build/R_3_3_15_n277.txt 3 3 15
 }

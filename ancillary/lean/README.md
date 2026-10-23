@@ -1,14 +1,14 @@
-# lean: two facts used in Lemma 3.1 of paper A
+# lean: two facts used in Lemma 3.1 of the paper
 
-**What it proves.** Lean 4 proofs, with no `sorry`, of the two facts behind the apex bound (A, Lemma 3.1),
-described in A, Section 10. Nothing else is formalised.
+**What it proves.** Lean 4 proofs, with no `sorry`, of the two facts behind the apex bound (Lemma 3.1),
+described in Section 10. Nothing else is formalised.
 
 * `local_ordered_edge_bound` (and `local_ordered_edge_bound_swap`, red and blue interchanged), in
   `LocalCombinatorics.lean`: in a 3-colouring with no red or blue triangle and no green K_k, the sum over
   u in N_1(v) of |N_1(v) ∩ N_2(u)| is at most (k-1) d_1(v). Its left side is 2 e_2(N_1(v)), so this is the bound
-  2 e_2(N_1(v)) <= (k-1) d_1(v) of A, Lemma 2.1 and Corollary 2.2. It rests on `mixedNeighbourhood_card_le`, the cap
+  2 e_2(N_1(v)) <= (k-1) d_1(v) of Lemma 2.1 and Corollary 2.2. It rests on `mixedNeighbourhood_card_le`, the cap
   |N_1(v) ∩ N_2(u)| <= k-1.
-* `unique_repeated_apex`, in `LocalCombinatorics.lean`: the pointwise identity behind A, Lemma 2.4. In a colouring with
+* `unique_repeated_apex`, in `LocalCombinatorics.lean`: the pointwise identity behind Lemma 2.4. In a colouring with
   no red or blue triangle, each triangle of H (all three edges red or blue) contributes exactly 1 to the apex
   count, at its unique apex, and every other triangle contributes 0.
 

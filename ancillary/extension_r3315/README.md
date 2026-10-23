@@ -9,7 +9,7 @@ towards the anchors, and the 11 x 11 colour matrix of the new vertices. `build_c
 
 **Inputs assumed.** The only premise of the certificate check is that the green clique number of H is 13.
 H has the same green graph as the paper's (3,3,14;266) circulant in `../circulants.json`; only its red/blue
-split differs. That circulant's green clique number is 13, proved by `../check_circulants.py` (A, Theorem 9.1) and
+split differs. That circulant's green clique number is 13, proved by `../check_circulants.py` (Theorem 9.1) and
 again by the direct search `../check_colouring_full.cpp` in `run_all.sh --full`. `check_277.py` checks that the
 green graphs agree. The direct searches below need no premise at all.
 

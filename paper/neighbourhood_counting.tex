@@ -178,10 +178,9 @@ The certificates are too large to check by hand but are verified in exact ration
 For $9\le k\le 15$, Table~\ref{tab:flagladder} gives the bounds on $\R(3,3,k)$ both without the certificates (Theorem~\ref{thm:ladder}, which is computer-assisted) and with them.
 Theorem~\ref{thm:444b} also gives $\R(4,4,4)\le 225$, from a four-vertex certificate with a single square.
 
-\paragraph{Four colours and the companion paper.}
+\paragraph{Four colours.}
 With the four-colour form of \eqref{eq:recurrence}, the bounds $\R(3,4,4)\le 73$ and $\R(4,4,4)\le 198$, with the survey's $\R(3,3,3,4)\le 149$, give ${\R(3,3,4,4)\le 442}$, ${\R(3,4,4,4)\le 1521}$ and ${\R(4,4,4,4)\le 6082}$ (Corollary~\ref{cor:four}).
 The best previous bounds, recalled in Section~\ref{sec:four}, are $450$, $1576$ and $6301$.
-In a companion paper \cite{DC26} we give new bounds for two-colour numbers: upper bounds for $\R(3,k)$ with $24\le k\le 50$, and the lower bounds $\R(4,21)\ge 260$ and $\R(4,24)\ge 370$.
 
 
 \begin{table}[t]
@@ -2583,7 +2582,7 @@ So every pair of them is red or blue, and as $\R(3,3)=6$ there are at most five 
 \paragraph{Ancillary files.}
 The ancillary files of this submission, also in the directory \texttt{ancillary/} of the repository \url{https://github.com/Lachy-Dauth/ramsey-neighbourhood-counting}, contain programs that check every computer-assisted result of the paper.
 Each certificate is checked by a program written from the definitions, which does not import the code that found it.
-The Python, C and C++ programs use only their standard libraries, except that the six-vertex checker in \texttt{flag5\_r444/} and its negative controls use NumPy for integer counts, and the C programs of \texttt{two\_colour\_r4k/}, for the companion paper, also use POSIX threads.
+The Python and C++ programs use only their standard libraries, except that the six-vertex checker in \texttt{flag5\_r444/} and its negative controls use NumPy for integer counts.
 Statements about searches and negative experiments (for instance in Sections~\ref{sec:five} and~\ref{sec:lower}, in Remark~\ref{rem:limits} and on $\R(3,3,3,3)$ in Section~\ref{sec:four}) report our runs and are not certified by these files.
 
 The command \texttt{sh run\_all.sh} runs the quick checks in a few minutes, \texttt{sh run\_all.sh --full} adds the long checks, and \texttt{sh run\_all.sh --controls} the negative and positive controls.
@@ -2662,7 +2661,6 @@ The author takes full responsibility for the contents of this paper.
 \bibitem{AM26} V.~Angeltveit and B.~D.~McKay, $R(5,5)\le 46$, \emph{J.\ Graph Theory} 112 (2026), no.~3, 198--208; arXiv:2409.15709.
 \bibitem{Boz26} L.~Boza, New upper bounds for the classical Ramsey numbers $R(4,4,4)$, $R(3,4,5)$ and $R(3,3,6)$, arXiv:2603.10851, 2026.
 \bibitem{CFIM16} M.~Codish, M.~Frank, A.~Itzhakov and A.~Miller, Computing the Ramsey number $R(4,3,3)$ using abstraction and symmetry breaking, \emph{Constraints} 21 (2016), 375--393.
-\bibitem{DC26} L.~Dauth, New bounds for small two-colour Ramsey numbers, companion paper, 2026.
 \bibitem{ET15} G.~Exoo and M.~Tatarevic, New lower bounds for 28 classical Ramsey numbers, \emph{Electron.\ J.\ Combin.} 22(3) (2015), \#P3.11.
 \bibitem{FKR04} S.~E.~Fettes, R.~L.~Kramer and S.~P.~Radziszowski, An upper bound of 62 on the classical Ramsey number $R(3,3,3,3)$, \emph{Ars Combin.} 72 (2004), 41--63.
 \bibitem{GR13} J.~Goedgebeur and S.~P.~Radziszowski, New computational upper bounds for Ramsey numbers $R(3,k)$, \emph{Electron.\ J.\ Combin.} 20(1) (2013), \#P30.
