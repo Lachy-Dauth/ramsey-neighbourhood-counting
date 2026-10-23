@@ -41,7 +41,7 @@ SHA-256 of the rebuilt matrix: `05237157a1e135d4fd5dc5632007ee3e429e25ec98bf7c9a
     --full: kcheck: colour 0, 1 forbidden=K3 clique_found=false; colour 2 forbidden=K15 clique_found=false
             glue_check: clique_number=14;  controls: control 1, 2, 3 PASS
 
-**Runtime** (10-core laptop, under load): default under 1 s. kcheck about 1.5 min, glue_check a few minutes,
-controls about 3 min (8 min for `--full` in all). `run_all.sh --full` also runs the paper's direct checker
+**Runtime** (10-core laptop): default under 1 s. kcheck about 1 min, glue_check about 2 min, controls about
+1 min (about 4 min for `--full` in all; more under load). `run_all.sh --full` also runs the paper's direct checker
 `../check_colouring_full.cpp` on the rebuilt matrix. It finds no red or blue K3 and no green K15, and its green
 search took 51 min (2,532,575,066 nodes).

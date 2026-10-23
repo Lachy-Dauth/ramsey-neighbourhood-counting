@@ -18,8 +18,11 @@ From [GR13] alone: R(3,17) <= 109 and R(3,20) <= 145. With [Back3]: R(3,16) <= 9
 * [GR13] J. Goedgebeur and S. Radziszowski, *New computational upper bounds for Ramsey numbers R(3,k)*,
   Electron. J. Combin. 20(1) (2013) #P30, arXiv:1210.5826v4: Tables 3, 4, 5 (exact values and lower bounds of
   e(3,k,n), k <= 10) and Theorem 2 (Radziszowski-Kreher). They are transcribed from the arXiv text in
-  `checker/gr13_table3.txt`, `gr13_table4.txt`, `gr13_table5.txt`. R(3,10) <= 41 (Angeltveit, arXiv:2401.00392)
-  is declared, but the chains do not need it. `--r310 42` still accepts, and a negative control tests this.
+  `checker/gr13_table3.txt`, `gr13_table4.txt`, `gr13_table5.txt`.
+* R(3,10) <= 42 [GR13, Theorem 6], as in Theorem 2.1 of paper B. The commands below pass `--r310 42`, as
+  `run_all.sh` does. Angeltveit's R(3,10) <= 41 (Electron. J. Combin. 32(4) (2025) #P4.30, arXiv:2401.00392)
+  is not needed: without `--r310` the checker uses 41, and the result is the same. The controls include a run
+  with `--r310 42` and a weakened e(3,10,41), which must be rejected.
 * [Back3] J. Backelin, *Edge number report 1*, arXiv:1410.1843v1, Section 5 table: lower bounds for e(3,l;n),
   l = 10..13, 35 <= n <= 43, transcribed in `checker/cited_extra.txt` (only the chain `r3k_back3_seq_k50.json`
   uses them).
@@ -37,8 +40,8 @@ From [GR13] alone: R(3,17) <= 109 and R(3,20) <= 145. With [Back3]: R(3,16) <= 9
 
 **How to run** (from this folder):
 
-    python3 checker/check_r3k_v2.py certs/r3k_back3_seq_k50.json --claim 16,97 --claim 19,132 --claim 23,185 --claim 24,200 --claim 50,729
-    python3 checker/check_r3k_v2.py certs/r3k_pub_seq_k50.json --no-back3 --claim 17,109 --claim 20,145 --claim 24,201
+    python3 checker/check_r3k_v2.py --r310 42 certs/r3k_back3_seq_k50.json --claim 16,97 --claim 19,132 --claim 23,185 --claim 24,200 --claim 50,729
+    python3 checker/check_r3k_v2.py --r310 42 certs/r3k_pub_seq_k50.json --no-back3 --claim 17,109 --claim 20,145 --claim 24,201
     python3 checker/negative_controls_v2.py certs/r3k_back3_seq_k50.json
     python3 checker/negative_controls_v2.py certs/r3k_pub_seq_k50.json
     python3 checker/negative_controls_high.py certs/r3k_back3_seq_k50.json

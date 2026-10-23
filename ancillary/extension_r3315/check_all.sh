@@ -3,8 +3,8 @@
 #   default : rebuild the matrix from the compact description (SHA-256), check that its host is the paper's
 #             (3,3,14;266) circulant (green graph), certcheck.py (PASS for k = 15, control FAIL for k = 14).
 #   --full  : also direct exact clique searches with kcheck.cpp (no red/blue K3, no green K15: about 1 minute),
-#             glue_check.cpp (green clique number exactly 14: a few minutes), and the negative controls in
-#             controls.py (kcheck -max: about 6 minutes).
+#             glue_check.cpp (green clique number exactly 14: about 2 minutes), and the negative controls in
+#             controls.py (kcheck -max: about 1 minute); about 4 minutes in all (see README.md).
 # Needs python3 and, for --full, a C++ compiler (c++, or $CXX).  Build products go to build/ (git-ignored).
 set -e
 cd "$(dirname "$0")"

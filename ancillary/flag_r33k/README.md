@@ -19,8 +19,10 @@ bound used is proved in the chain. The docstring of `check_unified.py` gives the
 Separately, three five-vertex exclusion certificates prove R(3,3,6) <= 86, R(3,3,7) <= 125 and R(3,3,8) <= 174
 without any ladder rows (`check_r33k5.py`, standalone; the quick check).
 
-All 155 certificate files that the chain references are shipped, and nothing else. The chain checker opens every
-listed file, so none can be dropped without editing the chain. Some are superseded within the chain:
+All 155 certificate files that the chain references are shipped. Besides them, `certificates/unified/` holds the
+chain `chain_final.json`, the flag-free chain `chain_noflag.json` and `flag_manifest_final.txt` (the list of the 155
+files). The chain checker
+opens every listed file, so none can be dropped without editing the chain. Some are superseded within the chain:
 * 28 four-vertex density certificates (k5/dens_39, ext/k6/dens_64..71, k6/dens_68..86) are dominated by a larger
   m for the same (k,n) (360 KB);
 * the exclusions k6/excl_87, five/k7/excl_126 and five/k8/excl_175 are dominated by stronger bounds (245 KB);
@@ -33,8 +35,11 @@ Together these are under 1 MB of the 13 MB. The chain was left exactly as it was
 
 **Inputs assumed** (Table 3 of the paper; the dictionaries `R2` and `R33` in `check_r33k.py`):
 R(3,j) for j = 3..15 (6, 9, 14, 18, 23, 28, 36, and the upper bounds 41, 50, 59, 68, 77, 87),
-R(3,3,3) = 17, R(3,3,4) = 30, R(3,3,5) <= 57. In the standalone checks also the hand-proved
-R(3,3,6) <= 88, R(3,3,7) <= 129, R(3,3,8) <= 179.
+R(3,3,3) = 17, R(3,3,4) = 30, R(3,3,5) <= 57. In the standalone checks the dictionary starts from the hand-proved
+R(3,3,6) <= 88, R(3,3,7) <= 129, R(3,3,8) <= 179, but these never enter when the three certificates are checked in
+the given order: each verified exclusion lowers its entry, and each certificate uses only the inputs above and the
+exclusions verified before it (green caps D3 = 56, 85, 124). Checked singly or out of order, a certificate may use
+the hand-proved values.
 
 | file | contents |
 |---|---|
@@ -42,6 +47,7 @@ R(3,3,6) <= 88, R(3,3,7) <= 129, R(3,3,8) <= 179.
 | `check_r33k.py`, `check_r33k5.py` | exact checkers for four- and five-vertex certificates (also usable standalone) |
 | `certificates/unified/chain_final.json` | the chain: per level, the flag certificates (paths relative to `certificates/`), the rows and the exclusion method |
 | `certificates/unified/chain_noflag.json` | the same ladder built with no flag certificates (it reproduces the paper's bounds; used by the controls) |
+| `certificates/unified/flag_manifest_final.txt` | the list of the 155 flag certificates that `chain_final.json` references (not read by the checkers) |
 | `certificates/k3`..`k6`, `ext/`, `five/` | the 155 flag certificates |
 | `controls_unified.py` | controls of the chain: accepted with its bounds; the flag-free chain gives exactly the paper's bounds; removing the flags, raising a row by one, B_7 - 1 by Psi, B_6 - 1 by flag and a corrupted density certificate are all rejected; the real colourings obtained from the circulant witnesses in `../circulants.json` (iterated green neighbourhoods and greedy deletion) satisfy every accepted m_j(s) |
 | `controls5.py` | negative controls for five-vertex certificates in the state of the chain |

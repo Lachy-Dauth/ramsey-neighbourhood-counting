@@ -43,7 +43,7 @@ average 10-30), so an idle machine is faster. Mode: Q = quick, F = `--full`, C =
 |  | the unified flag ladder: R(3,3,k) <= 86, 125, 173, 241, 309, 401, 505, 620, 748, 892 for k = 6..15 (155 flag certificates and 4178 ladder rows; A, Theorem 8.5) | F | 7.5 min |
 |  | controls of the chain (`controls_unified.py`) and of four five-vertex certificates (`controls5.py`); soundness test on a real colouring (`sanity5.py`) | C | 11 + 22 min; 35 s |
 | `extension_r3315/` | R(3,3,15) >= 278: the 277-vertex witness rebuilt from its compact description (SHA-256), and the certificate check that reduces it to the green clique number 13 of the n = 266 circulant (A, Theorem 9.3) | Q | 1 s |
-|  | direct exact searches on the full matrix (kcheck: no red/blue K3, no green K15; glue_check: green clique number 14) and negative controls | F | 8 min in total |
+|  | direct exact searches on the full matrix (kcheck: no red/blue K3, no green K15; glue_check: green clique number 14) and negative controls | F | 4 min in total |
 |  | the paper's `check_colouring_full.cpp` on the 277-vertex matrix | F | 51 min |
 | `two_colour_r3k/` | R(3,k) <= B_k for k <= 50 (two chains: [GR13] inputs only, and with Backelin's e(3,l;n) bounds), e.g. R(3,24) <= 201 ([GR13] only) or 200 (with [Back3]), R(3,50) <= 729; R(3,16) <= 97, R(3,17) <= 109, R(3,19) <= 132, R(3,20) <= 145, R(3,23) <= 185 (B, Theorem 2.1; the values for k <= 23 only reproduce known bounds); negative controls | Q | 30 s |
 | `two_colour_r4k/` | R(4,21) >= 260 and R(4,24) >= 370: graphs rebuilt from the deletion lists (SHA-256), rcheck and qpsym, negative controls (B, Theorem 3.1) | Q | 2 min (10 threads) |

@@ -25,11 +25,15 @@ Three colours (paper A). The previous values are from Radziszowski's survey (DS1
 | R(3,3,8) | (191 from the recurrence) | 179 | **173** |
 | R(3,3,k), 9 <= k <= 15 | (261 ... 1019 from the recurrence) | | **241, 309, 401, 505, 620, 748, 892** |
 | R(3,5,5) | (359) | 346 | **316** |
-| R(3,4,6) | (287) | 276 | **247** |
-| R(3,4,7), R(3,4,8), R(3,5,6) | (479, 748, 730) | | **409, 626, 622** |
+| R(3,4,6) | (288) | 276 | **247** |
+| R(3,4,7), R(3,4,8), R(3,5,6) | (483, 757, 733) | 458, 705, 685 | **409, 626, 622** |
 
 For 9 <= k <= 15, the ladder of A, Theorem 5.2 (computer-assisted, without flag certificates) gives
 R(3,3,k) <= 247, 315, 407, 512, 628, 756, 901; the bold values use the flag certificates of A, Theorem 8.5.
+
+Every value in this table uses published inputs only. With the two-colour bounds that the survey reports as
+unpublished (A, Table 3), the benchmarks become 287 for R(3,4,6) and 479, 748, 730 for the last row, the hand
+bounds in the last row 456, 700, 683, and the computer bounds R(3,4,6) <= 245 and 406, 625, 619 (A, Table 1).
 
 | number | previous lower bound | new |
 |---|---|---|
@@ -80,10 +84,12 @@ premises; each README lists them. Some inputs are themselves computer results, f
 
 ## How the work was done
 
-The research, proofs, programs and papers were produced by Lachlan Dauth working with Claude Opus 5.5, a large
-language model developed by Anthropic. In line with arXiv's policy, the model is acknowledged in the papers rather
+The research, proofs, programs and papers were produced by Lachlan Dauth working with two AI systems: OpenAI's
+Codex (based on GPT-6) in the first stage of the project, and Claude Opus 5.5, a large language model developed by
+Anthropic, in the later stages. In line with arXiv's policy, the models are acknowledged in the papers rather
 than listed as an author. Certificates were found with floating-point solvers and local search, then rounded and
-checked exactly. Each result was also re-checked by an independently written verifier before inclusion.
+checked exactly. Each result was also re-checked, before inclusion, by a separately written exact verifier that
+shares no code with the search (both were written with the model; see the Acknowledgements of the papers).
 
 ## Licence
 
