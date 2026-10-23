@@ -59,8 +59,8 @@ from itertools import permutations, product, combinations
 # ---------------------------------------------------------------- inputs (Table 3 of the paper)
 R2 = {3: 6, 4: 9, 5: 14, 6: 18, 7: 23, 8: 28, 9: 36, 10: 41, 11: 50, 12: 59, 13: 68, 14: 77, 15: 87}  # R(3,j) (upper bounds for j >= 10)
 R33 = {1: 1, 2: 6, 3: 17, 4: 30, 5: 57,          # R(3,3,j): exact for j <= 4 (R(3,3,1) = 1, R(3,3,2) = R(3,3) = 6); 57 from (1)
-       6: 88, 7: 129, 8: 179,                    # Theorems 3.1, 3.2, 3.3 of the paper (hand proofs)
-       9: 247, 10: 315, 11: 407, 12: 512, 13: 628, 14: 756, 15: 901}   # Theorem 4.2 (ladder)
+       6: 88, 7: 129, 8: 179,                    # Theorems 4.1, 4.3, 4.5 of the paper (hand proofs)
+       9: 247, 10: 315, 11: 407, 12: 512, 13: 628, 14: 756, 15: 901}   # Theorem 5.2 (ladder)
 VERIFIED_M = {}      # (k, n) -> a lower bound on e_H proved by a density certificate checked in this run
 COL = {'R': 0, 'B': 1, 'G': 2}
 EDGES = [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]

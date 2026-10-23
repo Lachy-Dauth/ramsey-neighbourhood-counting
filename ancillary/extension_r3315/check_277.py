@@ -6,7 +6,7 @@
 1. build_compact.py rebuilds the 277 x 277 colour matrix from R_3_3_15_n277_compact.json; its SHA-256 must be
    05237157a1e135d4fd5dc5632007ee3e429e25ec98bf7c9a762b3557e780b6ad (the hash of the matrix found by the search).
 2. The host H (vertices 0..265) must have exactly the green graph of the paper's (3,3,14;266) circulant in
-   ../circulants.json, whose green clique number 13 is verified by ../check_circulants.py (Theorem 8.1).  (Its
+   ../circulants.json, whose green clique number 13 is verified by ../check_circulants.py (Theorem 9.1).  (Its
    red/blue split differs from the paper's; certcheck.py needs only the green clique number of H.)
 3. certcheck.py F 266 13 15 must PASS: no red or blue triangle, and no green K15 given omega_green(H) <= 13.
 4. Control: certcheck.py F 266 13 14 must FAIL (the witness does contain a green K14).

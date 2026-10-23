@@ -6,9 +6,9 @@ computer-assisted claim in them. Run `make verify` to re-check the quick part in
 - **[A] Neighbourhood counting and new bounds for small three-colour Ramsey numbers** ([pdf](paper/neighbourhood_counting.pdf), [tex](paper/neighbourhood_counting.tex))
 - **[B] New bounds for small two- and four-colour Ramsey numbers** ([pdf](paper/two_four_colour.pdf), [tex](paper/two_four_colour.tex))
 
-> **Status.** These are draft preprints, not peer reviewed. The hand proofs can be checked with pen and paper.
+> **Status.** These are preprints, not yet peer reviewed. The hand proofs can be checked with pen and paper.
 > The other results are computer-assisted. Every certificate and witness is verified in exact arithmetic by
-> programs in [`ancillary/`](ancillary/), which were written independently of the searches that found them.
+> programs in [`ancillary/`](ancillary/), which share no code with the searches that found them.
 > Please report any problem as an issue.
 
 ## Results
@@ -23,10 +23,13 @@ Three colours (paper A). The previous values are from Radziszowski's survey (DS1
 | R(3,3,6) | 91 | 88 | **86** |
 | R(3,3,7) | (136 from the recurrence) | 129 | **125** |
 | R(3,3,8) | (191 from the recurrence) | 179 | **173** |
-| R(3,3,k), 9 <= k <= 15 | (261 ... 1019 from the recurrence) | 247 ... 901 | **241, 309, 401, 505, 620, 748, 892** |
+| R(3,3,k), 9 <= k <= 15 | (261 ... 1019 from the recurrence) | | **241, 309, 401, 505, 620, 748, 892** |
 | R(3,5,5) | (359) | 346 | **316** |
 | R(3,4,6) | (287) | 276 | **247** |
 | R(3,4,7), R(3,4,8), R(3,5,6) | (479, 748, 730) | | **409, 626, 622** |
+
+For 9 <= k <= 15, the ladder of A, Theorem 5.2 (computer-assisted, without flag certificates) gives
+R(3,3,k) <= 247, 315, 407, 512, 628, 756, 901; the bold values use the flag certificates of A, Theorem 8.5.
 
 | number | previous lower bound | new |
 |---|---|---|
@@ -40,7 +43,7 @@ Two and four colours (paper B):
 | R(3,k), 24 <= k <= 50 | no upper bound listed | **R(3,24) <= 201, ..., R(3,50) <= 729** |
 | R(4,21) | >= 242 (257 implied by a 2026 preprint) | **>= 260** |
 | R(4,24) | >= 343 (implicit) | **>= 370** |
-| R(3,3,4,4), R(3,4,4,4), R(4,4,4,4) | <= 450, 1576, 6306 | **<= 442, 1521, 6082** |
+| R(3,3,4,4), R(3,4,4,4), R(4,4,4,4) | <= 450, 1576, 6306 (6301 implicit in Boza 2026) | **<= 442, 1521, 6082** |
 
 The main new tool is the flag-algebra certificate (Razborov) whose constraints include *local caps*. A local cap
 bounds an intersection of colour neighbourhoods by a smaller Ramsey number. Without the caps, flag algebras give
@@ -70,7 +73,7 @@ Each subfolder has its own README, with the inputs it assumes and the expected o
 | `ancillary/extension_r3315/` | R(3,3,15) >= 278 (A, Theorem 9.3) |
 | `ancillary/two_colour_r3k/` | R(3,k) for k <= 50 (B, Theorem 2.1) |
 | `ancillary/two_colour_r4k/` | R(4,21) >= 260, R(4,24) >= 370 (B, Theorem 3.1) |
-| `ancillary/lean/` | Lean 4 proofs of two lemmas used in A, Section 3 (needs Mathlib) |
+| `ancillary/lean/` | Lean 4 proofs of two facts used in Lemma 3.1 of A (described in A, Section 10; needs Mathlib) |
 
 The checkers verify the finite computations that the proofs reduce to. Published Ramsey values used as inputs are
 premises; each README lists them. Some inputs are themselves computer results, for example R(3,3,4) = 30.

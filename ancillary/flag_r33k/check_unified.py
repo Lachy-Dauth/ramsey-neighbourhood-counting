@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Exact checker for the unified chain: flag certificates (checked by check_r33k.py) interleaved, level by level,
-with the rows of the ladder of Section 4 of the paper.  Standard library only; imports nothing from src/.
+with the rows of the ladder of Section 5 of the paper.  Standard library only; imports nothing from src/.
 
 Definitions (Section 3 of the paper), for a (3,3,k;n)-colouring with red-or-blue graph H:
   D = R(3,k) - 1 caps the red and the blue degree; B_{k-1} >= R(3,3,k-1) is the bound proved earlier in the chain,
@@ -15,7 +15,7 @@ A row (k, n) claims a valid lower bound m_k(n) on e(H).  The checker accepts it 
   * for f in {F, Psi} with a recorded pair h' < h'' of admissible degrees: the line through (h', f(h')) and
     (h'', f(h'')), if its slope is negative and it lies below f at every admissible h, gives ceil(n alpha/(2 beta))
     (Lemma 3.4(a), line alpha - beta h);
-  * m_k(n-1) + max(0, n - B_{k-1})  and  ceil(m_k(s) n(n-1)/(s(s-1))) for 2 <= s < n   (Lemma 3.6);
+  * m_k(n-1) + max(0, n - B_{k-1})  and  ceil(m_k(s) n(n-1)/(s(s-1))) for 2 <= s < n   (Lemma 3.5);
   * a value proved for (k, n) by a flag density certificate verified earlier in the chain.
 m_{k-1}(z) in Psi is the value accepted earlier in the chain (m_2(z) = C(z,2) for z <= 5; m(0) = m(1) = 0).
 The bound B_k (k >= 6) is accepted if, at n = B_k, F or Psi is positive at every admissible h (Lemma 3.4(b)), or a

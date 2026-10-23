@@ -1,9 +1,9 @@
-"""Exact check of Lemma 7.2, Theorem 7.4 (R(4,4,4)<=226) and identity (6) (R(4,4,4)<=225).
+"""Exact check of Lemma 7.3, Theorem 7.4 (R(4,4,4)<=226) and identity (7) (R(4,4,4)<=225).
 
 Standard library only. Every density is the average over all 24 vertex relabellings and
 6 colour relabellings of a labelled colouring of K4; an identity among symmetrised densities
 holds for every colouring of K_n iff it holds for each of the 729 labelled colourings of K4.
-Run: python3 verify_r444.py   (about a minute)
+Run: python3 verify_r444.py   (a few seconds)
 """
 # Independent check of the R(4,4,4) <= 226 and <= 225 certificates (fresh implementation).
 from fractions import Fraction as Fr

@@ -6,7 +6,7 @@
 1. the chain is accepted, with the bounds it claims;
 2. the chain built without any flag certificate (certificates/unified/chain_noflag.json, written by the search code
    from an empty flag manifest) is accepted and gives
-   exactly the paper's bounds 88, 129, 179, 247, 315, 407, 512, 628, 756, 901 (Theorem 4.2 and Section 4);
+   exactly the paper's bounds 88, 129, 179, 247, 315, 407, 512, 628, 756, 901 (Theorem 5.2 and Section 5);
 3. the chain with its flag certificates removed is rejected;
 4. each of several ladder rows with its m raised by one is rejected;
 5. B_7 claimed one lower (126, by Psi) is rejected, and B_6 = 86 'by flag' is rejected;
@@ -21,7 +21,7 @@ import check_unified as U
 import check_r33k as C
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CIRCULANTS = os.path.join(HERE, '..', 'circulants.json')     # the paper's witnesses (Theorem 8.1)
+CIRCULANTS = os.path.join(HERE, '..', 'circulants.json')     # the paper's witnesses (Theorem 9.1)
 
 def circulant(w):
     """colour matrix of a circulant witness: 0 red, 1 blue, 2 green, -1 on the diagonal"""

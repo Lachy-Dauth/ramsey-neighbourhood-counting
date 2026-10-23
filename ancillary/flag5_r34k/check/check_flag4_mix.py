@@ -29,7 +29,7 @@ from itertools import permutations, product, combinations
 PAIRS = [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]
 
 # Ramsey inputs: exact values or published/proved upper bounds (two colours, entries sorted)
-# published bounds only (Table 2 of the paper / [Rad26]); the unpublished starred AM bounds R(4,6) <= 40,
+# published bounds only (Table 3 of the paper / [Rad26]); the unpublished starred AM bounds R(4,6) <= 40,
 # R(4,7) <= 58, R(4,8) <= 79, R(5,6) <= 85 are NOT in the base table and must be given with --input.
 R2 = {(3, 3): 6, (3, 4): 9, (3, 5): 14, (3, 6): 18, (3, 7): 23, (3, 8): 28, (3, 9): 36, (3, 10): 41,
       (4, 4): 18, (4, 5): 25, (4, 6): 41, (4, 7): 61, (4, 8): 84, (5, 5): 46, (5, 6): 87}
@@ -38,7 +38,7 @@ R2 = {(3, 3): 6, (3, 4): 9, (3, 5): 14, (3, 6): 18, (3, 7): 23, (3, 8): 28, (3, 
 # R(3,4,5) <= 155.  Further (new) inputs are given on the command line with --input and printed.
 R3_BASE = {(3, 3, 3): 17, (3, 3, 4): 30, (3, 3, 5): 57, (3, 4, 4): 77, (3, 3, 6): 88, (3, 4, 5): 155,
            (3, 3, 7): 129, (3, 3, 8): 179, (3, 4, 6): 276, (3, 5, 5): 346, (3, 4, 7): 458}
-# (3,3,8) <= 179: Theorem 4.x of the paper; (3,4,6) <= 276, (3,5,5) <= 346: Theorems 6.3, 6.4;
+# (3,3,8) <= 179: Theorem 4.5 of the paper; (3,4,6) <= 276, (3,5,5) <= 346: Theorems 6.3, 6.4;
 # (3,4,7) <= 458: Proposition 6.5 without starred inputs.
 
 

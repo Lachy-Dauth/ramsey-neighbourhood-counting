@@ -1,6 +1,8 @@
 # Ancillary files
 
-For the two papers in `../paper/`: **[A]** *Neighbourhood counting and new bounds for small three-colour Ramsey numbers* and **[B]** *New bounds for small two- and four-colour Ramsey numbers*. References below such as "A, Theorem 8.2" are to their numbering.
+For the two papers **[A]** *Neighbourhood counting and new bounds for small three-colour Ramsey numbers* and **[B]** *New bounds for small two- and four-colour Ramsey numbers* (in the git repository
+https://github.com/Lachy-Dauth/ramsey-neighbourhood-counting they are in `../paper/`). References below such as
+"A, Theorem 8.2" are to their numbering. The code and data are under the MIT licence (`LICENSE`).
 
 This folder holds, for every computational claim of the papers, the data and an exact checker. You need only the
 Python 3 standard library, a C++17 compiler and a C compiler with POSIX threads. The exceptions are
@@ -8,9 +10,9 @@ Python 3 standard library, a C++17 compiler and a C compiler with POSIX threads.
 which need numpy; `run_all.sh` skips them, and says so, if numpy is missing. Every script can be run from any
 directory, because all paths are relative to the script.
 
-    sh run_all.sh              # quick mode, about 4 minutes (also: make verify; this is what CI runs)
-    sh run_all.sh --full       # + the long checks and the direct clique searches (1.5-2 hours; make verify-full)
-    sh run_all.sh --controls   # the expensive negative and positive controls (about 2 hours; make verify-controls)
+    sh run_all.sh              # quick mode, about 4 minutes (in the git repository also: make verify, which CI runs)
+    sh run_all.sh --full       # + the long checks and the direct clique searches (1.5-2 hours; in the git repository: make verify-full)
+    sh run_all.sh --controls   # the expensive negative and positive controls (about 2 hours; in the git repository: make verify-controls)
 
 `run_all.sh` stops with a non-zero exit status at the first failing check, and prints the wall time of every
 step. Each subfolder has a README with what it proves, the inputs it assumes, how to run it, the expected output
@@ -22,7 +24,7 @@ average 10-30), so an idle machine is faster. Mode: Q = quick, F = `--full`, C =
 
 | file or folder | result checked | mode | runtime |
 |---|---|---|---|
-| `verify_hand_proofs.py` | every numerical step of the hand proofs: 88, 129, 179, the m6/m7 tables, 155, 276, 346, the triangle identities on all 27 coloured triangles, the comparison values (A, Sections 4, 6) | Q | 1 s |
+| `verify_hand_proofs.py` | the main numerical steps of the hand proofs (not every intermediate value): 88, 129, 179, the m6/m7 tables, 155, 276, 346, the triangle identities on all 27 coloured triangles, the comparison values (A, Sections 4, 6) | Q | 1 s |
 | `bootstrap.py` | regenerates `tables.json`, the density certificate for the ladder (A, Section 5) | - | |
 | `tables.json`, `verify_bootstrap.py` | independent exact check of `tables.json`: 4240 rows, 420,545 degree cases, R(3,3,k) <= 88, 129, 179, 247, 315, 407, 512, 628, 756, 901 for k = 6..15 (A, Theorem 5.2) | Q | 10 s |
 | `verify_cascade.py` | R(3,4,7) <= 456, R(3,4,8) <= 700, R(3,5,6) <= 683 (and 276, 346), with the survey's Table Ib values (A, Proposition 6.5) | Q | 1 s |
@@ -43,10 +45,10 @@ average 10-30), so an idle machine is faster. Mode: Q = quick, F = `--full`, C =
 | `extension_r3315/` | R(3,3,15) >= 278: the 277-vertex witness rebuilt from its compact description (SHA-256), and the certificate check that reduces it to the green clique number 13 of the n = 266 circulant (A, Theorem 9.3) | Q | 1 s |
 |  | direct exact searches on the full matrix (kcheck: no red/blue K3, no green K15; glue_check: green clique number 14) and negative controls | F | 8 min in total |
 |  | the paper's `check_colouring_full.cpp` on the 277-vertex matrix | F | 51 min |
-| `two_colour_r3k/` | R(3,k) <= B_k for k <= 50 (two chains: [GR13] inputs only, and with Backelin's e(3,l;n) bounds), e.g. R(3,24) <= 200, R(3,50) <= 729; R(3,16) <= 97, R(3,17) <= 109, R(3,19) <= 132, R(3,20) <= 145, R(3,23) <= 185 (B, Theorem 2.1; the values for k <= 23 only reproduce known bounds); negative controls | Q | 30 s |
+| `two_colour_r3k/` | R(3,k) <= B_k for k <= 50 (two chains: [GR13] inputs only, and with Backelin's e(3,l;n) bounds), e.g. R(3,24) <= 201 ([GR13] only) or 200 (with [Back3]), R(3,50) <= 729; R(3,16) <= 97, R(3,17) <= 109, R(3,19) <= 132, R(3,20) <= 145, R(3,23) <= 185 (B, Theorem 2.1; the values for k <= 23 only reproduce known bounds); negative controls | Q | 30 s |
 | `two_colour_r4k/` | R(4,21) >= 260 and R(4,24) >= 370: graphs rebuilt from the deletion lists (SHA-256), rcheck and qpsym, negative controls (B, Theorem 3.1) | Q | 2 min (10 threads) |
 |  | direct rcheck of the 369-vertex graph for independent 24-sets | F | 9 min (10 threads) |
-| `lean/` | Lean 4 formalisation of the local step of the apex lemma and the unique-apex identity, no `sorry` (A, Section 10). Needs Lean 4 and Mathlib | - | |
+| `lean/` | Lean 4 formalisation of two facts used in Lemma 3.1 of A (described in A, Section 10): the local step of the apex lemma and the unique-apex identity, no `sorry`. Needs Lean 4 and Mathlib; see `lean/README.md` | - | |
 | `run_all.sh` | runs everything above | | |
 
 The graph-theoretic premises, such as the local caps and the counting lemmas, are proved in the papers. These

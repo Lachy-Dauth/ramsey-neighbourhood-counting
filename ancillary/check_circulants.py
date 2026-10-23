@@ -1,4 +1,4 @@
-"""Check the circulant witnesses of Theorem 8.1.  Standard library only (plus a C++ compiler
+"""Check the circulant witnesses of Theorem 9.1.  Standard library only (plus a C++ compiler
 for the clique search).  Run: python3 check_circulants.py
 
 1. sum-free check: red and blue have no triangle;

@@ -5,13 +5,13 @@
 | k | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | R(3,3,k) <= | 86 | 125 | 173 | 241 | 309 | 401 | 505 | 620 | 748 | 892 |
-| paper's ladder (Theorem 4.2) | 88 | 129 | 179 | 247 | 315 | 407 | 512 | 628 | 756 | 901 |
+| paper's ladder (Theorem 5.2) | 88 | 129 | 179 | 247 | 315 | 407 | 512 | 628 | 756 | 901 |
 
 The chain `certificates/unified/chain_final.json` interleaves, level by level, 155 exact flag certificates with
-the rows of the ladder of Section 4. These are 117 four-vertex certificates (`k3`..`k6`, `ext/`) and 38 five-vertex
+the rows of the ladder of Section 5. These are 117 four-vertex certificates (`k3`..`k6`, `ext/`) and 38 five-vertex
 certificates (`five/`). The certificates are density certificates (lower bounds on the number of red-or-blue edges
 of a (3,3,k;n)-colouring) and exclusion certificates. The rows are the lower bounds m_k(n) on e(H), with the line
-bounds of Lemmas 3.2-3.6. `check_unified.py` accepts a row or a bound B_k only if it follows from the paper's
+bounds of Lemmas 3.2-3.5. `check_unified.py` accepts a row or a bound B_k only if it follows from the paper's
 lemmas and from values proved earlier in the same run. Every R(3,3,j) for j >= 6 starts at infinity, so every
 bound used is proved in the chain. The docstring of `check_unified.py` gives the rules. Those of
 `check_r33k.py` (four-vertex) and `check_r33k5.py` (five-vertex) give the certificate semantics.
@@ -23,10 +23,12 @@ All 155 certificate files that the chain references are shipped, and nothing els
 listed file, so none can be dropped without editing the chain. Some are superseded within the chain:
 * 28 four-vertex density certificates (k5/dens_39, ext/k6/dens_64..71, k6/dens_68..86) are dominated by a larger
   m for the same (k,n) (360 KB);
-* the exclusions k6/excl_87, five/k7/excl_126 and five/k8/excl_175 are dominated by stronger bounds (245 KB).
+* the exclusions k6/excl_87, five/k7/excl_126 and five/k8/excl_175 are dominated by stronger bounds (245 KB);
+* the five-vertex density certificates five/k11/dens_387 (m = 17656) and five/k13/dens_594 (m = 36621) are
+  dominated by the line bounds of the rows (11,387) and (13,594), m = 17678 and 36626 (8 KB).
 
 Together these are under 1 MB of the 13 MB. The chain was left exactly as it was checked. The bulk is `five/`
-(12 MB): the five-vertex certificates at levels 6, 7, 8, 11 and 13 that carry the improvement.
+(12 MB): the five-vertex certificates at levels 6, 7 and 8 that carry the improvement.
 `certificates/SHA256SUMS` lists the SHA-256 of every certificate and of the chain.
 
 **Inputs assumed** (Table 3 of the paper; the dictionaries `R2` and `R33` in `check_r33k.py`):

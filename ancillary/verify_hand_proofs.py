@@ -1,4 +1,5 @@
-"""Exact check of every numerical step in Sections 4 and 6 of the paper.
+"""Exact check of the main numerical steps in Sections 4 and 6 of the paper (some intermediate values, and
+some values quoted only in remarks, are not checked).
 
 Standard library only. Each check mirrors one displayed statement; the
 mathematical justification of the inequalities themselves is in the paper.
@@ -62,7 +63,7 @@ for z in range(125, 129):
 ok(m7 == {124: 2495, 125: 2532, 126: 2570, 127: 2609, 128: 2649}, "m7 values")
 
 # ---------------- Theorem 4.5: R(3,3,8) <= 179 ----------------
-ok([h * (2 * h - 200) + 2 * m7[178 - h] for h in range(50, 55)] == [298, 220, 148, 82, 22], "table of Theorem 4.6")
+ok([h * (2 * h - 200) + 2 * m7[178 - h] for h in range(50, 55)] == [298, 220, 148, 82, 22], "table of Theorem 4.5")
 
 # ---------------- Recurrence (1) with the parity refinement [DS1 6.1(a)] ----------------
 def P(terms):

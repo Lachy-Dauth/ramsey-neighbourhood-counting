@@ -45,8 +45,8 @@ From [GR13] alone: R(3,17) <= 109 and R(3,20) <= 145. With [Back3]: R(3,16) <= 9
 
 **Expected output.** One line `k=..: R(3,k) <= B verified (...)` per level, then
 
-    ACCEPT: 13376 rows; 53 orders excluded by enumeration, 765 degree sequences certified          (back3)
-    ACCEPT: 13403 rows; 50 orders excluded by enumeration, 766 degree sequences certified          (published only)
+    ACCEPT: 13376 rows; 53 (k,n,e) triples excluded by enumeration, 765 degree sequences certified          (back3)
+    ACCEPT: 13403 rows; 50 (k,n,e) triples excluded by enumeration, 766 degree sequences certified          (published only)
 
 The controls end with `ALL NEGATIVE CONTROLS BEHAVE` and `ALL HIGH-LEVEL CONTROLS REJECTED`.
 

@@ -1,8 +1,8 @@
 # flag5_r444: five-vertex flag certificates for R(4,4,4) <= 198
 
 **What it proves.** R(4,4,4) <= 198, and also <= 199 and <= 204 from separate certificates. Each certificate is
-an exact rational certificate on labelled colourings of K5. Its star coefficients, cap rows (one-, two- and
-three-rooted neighbourhood caps, plus lower degree bounds), and squares ('edge', 'tri', 'vpair' and the
+an exact rational certificate on labelled colourings of K5. Its star coefficients, cap rows (one- to
+four-rooted neighbourhood caps, plus lower degree bounds), and squares ('edge', 'tri', 'vpair' and the
 edge-rooted localising squares 'eloc') add up to a function F. Every S5 x S3 orbit average of F is <= 0, while
 the star part J(d) is > 0 at every admissible degree profile. So no (4,4,4;n)-colouring exists. The docstring
 of `checkers/check5.py` gives every definition.

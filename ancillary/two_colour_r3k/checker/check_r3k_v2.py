@@ -402,7 +402,7 @@ def main():
         if B.get(k, 10**9) > b:
             print(f'CLAIM FAILED: R(3,{k}) <= {b} not established (have {B.get(k)})')
             return 1
-    print(f"ACCEPT: {nrows} rows; {STATS['seq_orders']} orders excluded by enumeration, "
+    print(f"ACCEPT: {nrows} rows; {STATS['seq_orders']} (k,n,e) triples excluded by enumeration, "
           f"{STATS['sequences']} degree sequences certified")
     return 0
 
