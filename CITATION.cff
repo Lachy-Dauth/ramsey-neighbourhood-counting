@@ -4,7 +4,6 @@ title: "Neighbourhood counting and new bounds for small Ramsey numbers: papers, 
 authors:
   - family-names: Dauth
     given-names: Lachlan
-  - name: "Claude Opus 5.5"
 date-released: 2026-10-23
 license: MIT
 repository-code: "https://github.com/Lachy-Dauth/ramsey-neighbourhood-counting"

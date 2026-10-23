@@ -77,17 +77,18 @@ premises; each README lists them. Some inputs are themselves computer results, f
 
 ## How the work was done
 
-The research, proofs, programs and papers were produced by Lachlan Dauth working with Claude (Anthropic), which is
-listed as a co-author. Certificates were found with floating-point solvers and local search, then rounded and
+The research, proofs, programs and papers were produced by Lachlan Dauth working with Claude Opus 5.5, a large
+language model developed by Anthropic. In line with arXiv's policy, the model is acknowledged in the papers rather
+than listed as an author. Certificates were found with floating-point solvers and local search, then rounded and
 checked exactly. Each result was also re-checked by an independently written verifier before inclusion.
 
 ## Licence
 
-The code and data are under the MIT licence (see `LICENSE`). The paper texts are copyright the authors.
+The code and data are under the MIT licence (see `LICENSE`). The paper texts are copyright the author.
 
 ## Citation
 
 See `CITATION.cff`, or cite the papers as:
 
-> L. Dauth and Claude Opus 5.5, *Neighbourhood counting and new bounds for small three-colour Ramsey numbers*, preprint, 2026.
-> L. Dauth and Claude Opus 5.5, *New bounds for small two- and four-colour Ramsey numbers*, preprint, 2026.
+> L. Dauth, *Neighbourhood counting and new bounds for small three-colour Ramsey numbers*, preprint, 2026.
+> L. Dauth, *New bounds for small two- and four-colour Ramsey numbers*, preprint, 2026.
