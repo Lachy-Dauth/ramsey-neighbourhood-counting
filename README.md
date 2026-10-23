@@ -72,7 +72,7 @@ Each subfolder has its own README, with the inputs it assumes and the expected o
 | `ancillary/flag5_r34k/` | R(3,4,4) <= 73, R(3,4,5) <= 137 and the chain to R(3,4,8) (Theorem 8.3) |
 | `ancillary/flag_r33k/` | R(3,3,k) for 6 <= k <= 15 (Theorems 8.4, 8.5) |
 | `ancillary/extension_r3315/` | R(3,3,15) >= 278 (Theorem 9.3) |
-| `ancillary/lean/` | Lean 4 proofs of two facts used in Lemma 3.1 of A (described in Section 10; needs Mathlib) |
+| `ancillary/lean/` | Lean 4 + Mathlib: R(3,3,6) <= 88 (Theorem 4.1) end to end, the local caps and counting lemmas, the recurrence with parity and Corollary 8.7, and the finite checks of the other hand proofs (Section 10; `lean/README.md`) |
 
 The checkers verify the finite computations that the proofs reduce to. Published Ramsey values used as inputs are
 premises; each README lists them. Some inputs are themselves computer results, for example R(3,3,4) = 30.

@@ -45,7 +45,7 @@ average 10-30), so an idle machine is faster. Mode: Q = quick, F = `--full`, C =
 | `extension_r3315/` | R(3,3,15) >= 278: the 277-vertex witness rebuilt from its compact description (SHA-256), and the certificate check that reduces it to the green clique number 13 of the n = 266 circulant (Theorem 9.3) | Q | 1 s |
 |  | direct exact searches on the full matrix (kcheck: no red/blue K3, no green K15; glue_check: green clique number 14) and negative controls | F | 4 min in total |
 |  | the paper's `check_colouring_full.cpp` on the 277-vertex matrix | F | 51 min |
-| `lean/` | Lean 4 formalisation of two facts used in Lemma 3.1 of A (described in Section 10): the local step of the apex lemma and the unique-apex identity, no `sorry`. Needs Lean 4 and Mathlib; see `lean/README.md` | - | |
+| `lean/` | Lean 4 project (Lean 4.24.0, Mathlib v4.24.0), no `sorry`, standard axioms only: Theorem 4.1 (R(3,3,6) <= 88) end to end from R(3,6) <= 18 and R(3,3,4) <= 30; Lemmas 2.1-2.4, 3.1, 3.2, 3.4, 3.5, 9.2; the recurrence (1) with parity and Corollary 8.7; step (iii) of the other hand proofs. Run `sh lean/check_lean.sh` (downloads the Mathlib cache; about 4 min). See `lean/README.md` | - | 4 min |
 | `run_all.sh` | runs everything above | | |
 
 The graph-theoretic premises, such as the local caps and the counting lemmas, are proved in the paper. These

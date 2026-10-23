@@ -1,4 +1,4 @@
-import LocalCombinatorics
+import RamseyLean.LocalCombinatorics
 
 /-!
 This file bridges the local formalization's convenient hypotheses to the

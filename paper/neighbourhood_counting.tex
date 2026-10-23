@@ -297,6 +297,7 @@ The proof of Theorem~\ref{thm:336} needs no bound of this kind.
 \paragraph{Hand proofs.}
 The bounds marked ``hand'' in Table~\ref{tab:upper} have complete proofs that can be checked by hand, once their inputs are granted.
 Some inputs, such as $\R(3,3,4)=30$ \cite{CFIM16}, were themselves proved by computer.
+The proof of Theorem~\ref{thm:336}, $\R(3,3,6)\le 88$, and the lemmas it uses are also checked in Lean (Section~\ref{sec:verify}).
 Besides earlier results of this paper, these inputs are:
 \begin{itemize}
 \item the unstarred entries of Table~\ref{tab:inputs} (Section~\ref{sec:prelim});
@@ -2604,14 +2605,19 @@ These tests check the implementation.
 At the orders of the theorems no colouring exists, and the validity of the rows rests on their proofs in Section~\ref{sec:cert}.
 
 \paragraph{Formalisation in Lean.}
-Two Lean~4 files in \texttt{lean/}, \texttt{LocalCombinatorics.lean} and \texttt{ConventionalDefinitions.lean}, which need Mathlib, formalise with no unproved steps (no \texttt{sorry}) two facts used in Lemma~\ref{lem:apex}, on which all our hand bounds for $\R(3,3,k)$ rest.
+The directory \texttt{lean/} is a Lean~4 project (Lean~4.24.0 with Mathlib), built by \texttt{lean/check\_lean.sh}.
+It has no unproved steps (no \texttt{sorry}), and its theorems use only the standard axioms of Lean.
+Ramsey numbers enter only as explicit hypotheses, such as $\R(3,6)\le 18$, stated in the conventional form.
+It proves:
 \begin{itemize}
-\item The first is the cap $|N_1(v)\cap N_2(u)|\le k-1$ for $u\in N_1(v)$ in a $(3,3,k)$-colouring, and its sum over $u\in N_1(v)$, whose left side is $2e_2(N_1(v))$.
-So $2e_2(N_1(v))\le(k-1)d_1(v)$ (Lemma~\ref{lem:caps} and Corollary~\ref{cor:handshake}).
-\item The second is the pointwise identity behind $T(H)=\sum_v\big(e_2(N_1(v))+e_1(N_2(v))\big)$ (Lemma~\ref{lem:corners}).
-In a colouring with no red or blue triangle, each triangle of $H$ contributes exactly $1$ to the sum, at its apex, and every other triangle contributes $0$.
+\item Lemmas~\ref{lem:caps}, \ref{lem:multicaps} and~\ref{lem:corners} and Corollary~\ref{cor:handshake};
+\item Lemmas~\ref{lem:apex}, \ref{lem:commonnbr}, \ref{lem:line} and~\ref{lem:delete}, and Lemma~\ref{lem:cert};
+\item Theorem~\ref{thm:336}, $\R(3,3,6)\le 88$, end to end from $\R(3,6)\le 18$ and $\R(3,3,4)\le 30$;
+\item the recurrence~\eqref{eq:recurrence} with its parity refinement, for any number of colours, and Corollary~\ref{cor:four} from its three inputs;
+\item step~(iii) of the proofs of Theorems~\ref{thm:337}, \ref{thm:338}, \ref{thm:345}, \ref{thm:346}, \ref{thm:355} and~\ref{thm:444a}, Proposition~\ref{prop:supp} and Lemmas~\ref{lem:m6more} and~\ref{lem:m7}, with the inequalities of step~(ii), from Lemmas~\ref{lem:density}, \ref{lem:weighted}, \ref{lem:stars}, \ref{lem:fivecaps} and~\ref{lem:444id}, and the degree caps taken as hypotheses.
 \end{itemize}
-Nothing else is formalised.
+The ladder of Section~\ref{sec:ladder}, the certificates of Sections~\ref{sec:444} and~\ref{sec:five} and the witnesses of Section~\ref{sec:lower} are not formalised.
+The file \texttt{lean/README.md} lists the Lean theorem for each of these results.
 
 \paragraph{Literature.}\label{sec:lit}
 Comparison values are from revision~18 of the survey \cite{Rad26} and from \cite{Boz26}.
