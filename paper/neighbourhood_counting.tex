@@ -68,7 +68,7 @@ The four improvements come from five-vertex certificates, checked in exact arith
 Some bounds also have proofs by hand: a double count of about a page gives $\R(3,3,6)\le 88$, and weighted triangle and four-vertex identities give $\R(3,4,5)\le 155$ and $\R(4,4,4)\le 226$.
 
 We also give upper bounds for numbers for which the survey lists none: $\R(3,3,k)$ for $7\le k\le 15$, for instance $\R(3,3,8)\le 173$, as well as $\R(3,4,k)$ for $6\le k\le 8$, $\R(3,5,5)$ and $\R(3,5,6)$ (Table~\ref{tab:upper}).
-Through the four-colour recurrence, our bounds for $\R(3,4,4)$ and $\R(4,4,4)$, with the survey's $\R(3,3,3,4)\le 149$, also give $\R(3,3,4,4)\le 442$, $\R(3,4,4,4)\le 1521$ and $\R(4,4,4,4)\le 6082$.
+Through the four-colour recurrence, our bounds for $\R(3,4,4)$ and $\R(4,4,4)$, with the survey's $\R(3,3,3,4)\le 149$, also give $\R(3,3,4,4)\le 442$, $\R(3,4,4,4)\le 1521$ and $\R(4,4,4,4)\le 6082$, improving $450$, $1576$ and $6301$.
 Explicit colourings give $\R(3,3,k)\ge 133$, $183$, $203$, $232$, $267$ and $278$ for $k=9$, $11$, $12$, $13$, $14$ and $15$, improving the lower bounds in the survey.
 \end{abstract}
 
@@ -245,7 +245,7 @@ We have no new lower bound for other $\R(3,3,k)$.}
 
 \subsection{Method}
 
-Each of our upper bounds $\R(\bt)\le n$ is proved by contradiction from a colouring of $K_n$ with no colour-$i$ $K_{t_i}$ for any $i$, in three steps.
+Each of our three-colour upper bounds $\R(\bt)\le n$ is proved by contradiction from a colouring of $K_n$ with no colour-$i$ $K_{t_i}$ for any $i$, in three steps.
 \begin{enumerate}[label=(\roman*)]
 \item \emph{Local caps.}
 By the proof of \eqref{eq:recurrence}, every profile is \emph{admissible}, that is, a triple of nonnegative integers with sum $n-1$ and $i$th entry at most $\R(\bt-\e_i)-1$.
@@ -321,7 +321,7 @@ The checking programs are in the ancillary files, and Section~\ref{sec:verify} l
 \paragraph{How to read this paper.}
 The strongest upper bounds come from Section~\ref{sec:five}.
 Theorems~\ref{thm:r444five} and~\ref{thm:flag678}, the bounds $\R(3,4,4)\le 73$ and $\R(3,4,5)\le 137$ of Theorem~\ref{thm:r34five}, and Corollary~\ref{cor:four} need only Section~\ref{sec:prelim}, the set-up of Section~\ref{sec:444} (the random quadruple, Lemma~\ref{lem:stars} and the square $Q$) and Section~\ref{sec:five}.
-These results include the four improvements on bounds listed in the survey.
+These results include the four improvements on three-colour bounds listed in the survey, and the four-colour bounds of Corollary~\ref{cor:four}.
 Some of the other bounds of Theorem~\ref{thm:r34five} also take caps from the hand bounds of Section~\ref{sec:three}, and Theorem~\ref{thm:flagladder} also uses the lemmas of Section~\ref{sec:merge} and the procedure of Section~\ref{sec:ladder}.
 \begin{itemize}
 \item Sections~\ref{sec:merge}, \ref{sec:three} and~\ref{sec:types}, and Theorem~\ref{thm:444a}, give independent proofs by hand of weaker bounds, which a reader can check with pen and paper.
@@ -2351,7 +2351,7 @@ The survey lists $\R(3,3,4,4)\le 450$, $\R(3,4,4,4)\le 1576$ and $\R(4,4,4,4)\le
 The bound $6301$ is $4\cdot 1576-3$, the recurrence with parity, as $4\cdot 1576$ and all four terms are even.
 With $450$ in place of $442$, that is, without $\R(3,4,4)\le 73$, the bound $\R(4,4,4)\le 198$ alone gives $\R(3,4,4,4)\le 1545$ and $\R(4,4,4,4)\le 6178$.
 
-The survey's $\R(3,4,4,4)\le 1576$, which it also marks as implicit in \cite{Boz26}, comes from Boza's analogue of the parity clause \cite[Theorem~2.1]{Boz26}, which counts the triangles of one colour.
+The survey's $\R(3,4,4,4)\le 1576$, which it also marks as implicit in \cite{Boz26}, comes from Boza's analogue modulo~$3$ of the parity refinement \cite[Theorem~2.1]{Boz26}, which counts the triangles of one colour.
 Stated for exact values, it lowers the right-hand side $P=\sum_i\R(\bt-\e_i)-2$ of the recurrence by one when three conditions hold: $P\not\equiv 1\pmod 3$; for some $i$ with $t_i\ge 4$, $\R(\bt-\e_i)$ equals its own right-hand side and is $\not\equiv 1\pmod 3$; and, for the same $i$, $\R(\bt-2\e_i)\not\equiv 1\pmod 3$.
 From Boza's $\R(4,4,4)\le 229$ and the survey's $\R(3,3,4,4)\le 450$ it gives $229+3\cdot 450-2-1=1576$ (one may assume that these bounds, and $\R(3,4,4)\le 77$ and $\R(3,3,3,4)\le 149$, are attained, as otherwise the recurrence already gives $1576$).
 With our bounds it gives nothing more: at the three steps $P$ is $442$, $1522$ and $6082$ (before parity, which applies only at the second step), all $\equiv 1\pmod 3$, so the first condition fails.
@@ -2368,7 +2368,7 @@ Such a certificate is a dual solution of a flag-algebra relaxation \cite{Raz07},
 The unknowns of the relaxation are the densities of the colourings of $K_4$ or $K_5$ in a putative colouring of $K_{61}$, subject to positive-semidefiniteness constraints and to linear constraints from the caps, such as $|N_i(v)\cap N_j(u)|\le\R(3,3)-1=5$ for $u\in N_i(v)$ and $j\ne i$, as in Lemma~\ref{lem:caps}.
 
 Both relaxations are numerically feasible: floating-point solvers found densities meeting all their constraints, even when every vertex is required to have profile $(12,16,16,16)$.
-So in any case split by vertex profiles, the case that allows this profile at every vertex is not excluded.
+So a case split by vertex profiles would not help: the case in which every vertex has this profile is not excluded.
 The four-vertex relaxation was solved as a linear programme by HiGHS \cite{HH18}, with its semidefinite constraint imposed by eigenvector cuts until no eigenvalue was below $-10^{-8}$, and the five-vertex one as a semidefinite programme by Clarabel \cite{GC24} at tolerance $10^{-8}$.
 So we obtained no certificate, and no bound follows.
 For comparison, the six-vertex computation of Lidick\'y and Pfender \cite[Appendix~A]{LP21}, which uses no caps, gives only $\R(3,3,3,3)\le 65$.

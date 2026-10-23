@@ -7,7 +7,7 @@
 #   sh run_all.sh --controls  the expensive negative and positive controls of the flag certificates (about 2 hours)
 #
 # Works from any directory and exits non-zero as soon as a check fails.  Compiler: $CXX (default c++);
-# Python: $PYTHON (default python3).  Build products and regenerated matrices are git-ignored
+# Python: $PYTHON (default python3).  Build products and regenerated matrices are (in the git repository) git-ignored
 # (make clean).  Runtimes are listed in README.md.
 cd "$(dirname "$0")" || exit 2
 MODE=quick
@@ -23,7 +23,7 @@ export CXX
 export PYTHONDONTWRITEBYTECODE=1    # keep the tree free of __pycache__
 T0=$(date +%s)
 
-run() { # run <label> <command ...>: run from ancillary/, stop at the first failure, report the wall time
+run() { # run <label> <command ...>: run from this directory, stop at the first failure, report the wall time
   label=$1; shift
   echo "== $label"
   s=$(date +%s)

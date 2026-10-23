@@ -1,4 +1,4 @@
-# make verify           - quick mode: every check that finishes in a few minutes (Python 3 + C/C++ compilers)
+# make verify           - quick mode: every check that finishes in a few minutes (Python 3 + a C++ compiler)
 # make verify-full      - quick mode plus the long certificate checks and the direct clique searches (1.5-2 hours)
 # make verify-controls  - the expensive negative and positive controls of the flag certificates (about 2 hours)
 # make paper            - build the paper in paper/ (needs pdflatex)
